@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
+SplashScreen-Image: Imagem/tartaruga.png
 X-COMMENT: Main-Class will be added automatically by build
 
-SplashScreen-Image: br.unesp.rc.bibsys.view/giphy.gif
