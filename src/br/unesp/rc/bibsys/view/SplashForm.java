@@ -98,6 +98,7 @@ public class SplashForm extends javax.swing.JFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        txtTextoBib.setEnabled(false);
         txtTextoBib.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTextoBibActionPerformed(evt);
@@ -115,6 +116,8 @@ public class SplashForm extends javax.swing.JFrame
 
         btnPesquisar.setText("Pesquisar");
 
+        rbEnderecoArq.setEnabled(true);
+        rbEnderecoArq.setSelected(true);
         rbEnderecoArq.setText("Caminho do arquivo:");
         rbEnderecoArq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -326,11 +329,14 @@ public class SplashForm extends javax.swing.JFrame
         
         if (rbEnderecoArq.isSelected()) {
             txtEnderecoArq.setEnabled(true);
+            btnPesquisar.setEnabled(true);
             txtTextoBib.setEnabled(false);
-        } else if (rbTextoArq.isSelected()) {
-            txtEnderecoArq.setEnabled(false);
-            txtTextoBib.setEnabled(true);
-        }
+        } 
+        // não sei se esse else é necessário
+//        else if (rbTextoArq.isSelected()) {
+//            txtEnderecoArq.setEnabled(false);
+//            txtTextoBib.setEnabled(true);
+//        }
         
     }//GEN-LAST:event_rbEnderecoArqActionPerformed
 
@@ -339,11 +345,14 @@ public class SplashForm extends javax.swing.JFrame
         
         if (rbTextoArq.isSelected()) {
             txtEnderecoArq.setEnabled(false);
+            btnPesquisar.setEnabled(false);
             txtTextoBib.setEnabled(true);
-        } else if (rbEnderecoArq.isSelected()) {
-            txtEnderecoArq.setEnabled(true);
-            txtTextoBib.setEnabled(false);
-        }
+        } 
+        // não sei se esse else é necessario ou não
+//        else if (rbEnderecoArq.isSelected()) {
+//            txtEnderecoArq.setEnabled(true);
+//            txtTextoBib.setEnabled(false);
+//        }
         
     }//GEN-LAST:event_rbTextoArqActionPerformed
 

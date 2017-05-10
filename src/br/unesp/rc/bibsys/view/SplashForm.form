@@ -256,6 +256,9 @@
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JTextField" name="txtTextoBib">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTextoBibActionPerformed"/>
               </Events>
@@ -282,6 +285,7 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="rbEnderecoArq">
               <Properties>
+                <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Caminho do arquivo:"/>
               </Properties>
               <Events>
@@ -289,6 +293,7 @@
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="ButtonGroup buttonGroup = new ButtonGroup();"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="rbEnderecoArq.setEnabled(true);"/>
                 <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="buttonGroup.add(rbEnderecoArq);"/>
               </AuxValues>
             </Component>
