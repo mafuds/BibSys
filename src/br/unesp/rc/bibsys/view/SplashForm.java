@@ -42,11 +42,11 @@ public class SplashForm extends javax.swing.JFrame
         txtTextoBib = new javax.swing.JTextField();
         btnConverter = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
-        txtCaminhoArq = new javax.swing.JTextField();
+        txtEnderecoArq = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
         ButtonGroup buttonGroup = new ButtonGroup();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rbEnderecoArq = new javax.swing.JRadioButton();
+        rbTextoArq = new javax.swing.JRadioButton();
         barraMenu = new javax.swing.JMenuBar();
         menuAcoes = new javax.swing.JMenu();
         menuItemConverter = new javax.swing.JMenuItem();
@@ -115,21 +115,21 @@ public class SplashForm extends javax.swing.JFrame
 
         btnPesquisar.setText("Pesquisar");
 
-        jRadioButton1.setText("Caminho do arquivo:");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        rbEnderecoArq.setText("Caminho do arquivo:");
+        rbEnderecoArq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                rbEnderecoArqActionPerformed(evt);
             }
         });
-        buttonGroup.add(jRadioButton1);
+        buttonGroup.add(rbEnderecoArq);
 
-        jRadioButton2.setText("Texto a ser convertido:");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        rbTextoArq.setText("Texto a ser convertido:");
+        rbTextoArq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                rbTextoArqActionPerformed(evt);
             }
         });
-        buttonGroup.add(jRadioButton2);
+        buttonGroup.add(rbTextoArq);
 
         javax.swing.GroupLayout pnConteudoLayout = new javax.swing.GroupLayout(pnConteudo);
         pnConteudo.setLayout(pnConteudoLayout);
@@ -146,28 +146,28 @@ public class SplashForm extends javax.swing.JFrame
                 .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtTextoBib, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
-                        .addComponent(txtCaminhoArq)
+                        .addComponent(txtEnderecoArq)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesquisar)))
                 .addContainerGap())
             .addGroup(pnConteudoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(rbEnderecoArq)
+                    .addComponent(rbTextoArq))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnConteudoLayout.setVerticalGroup(
             pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnConteudoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jRadioButton1)
+                .addComponent(rbEnderecoArq)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCaminhoArq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEnderecoArq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(jRadioButton2)
+                .addComponent(rbTextoArq)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTextoBib, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -321,14 +321,31 @@ public class SplashForm extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_menuItemCompararActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void rbEnderecoArqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbEnderecoArqActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+        if (rbEnderecoArq.isSelected()) {
+            txtEnderecoArq.setEnabled(true);
+            txtTextoBib.setEnabled(false);
+        } else if (rbTextoArq.isSelected()) {
+            txtEnderecoArq.setEnabled(false);
+            txtTextoBib.setEnabled(true);
+        }
+        
+    }//GEN-LAST:event_rbEnderecoArqActionPerformed
+
+    private void rbTextoArqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbTextoArqActionPerformed
+        // TODO add your handling code here:
+        
+        if (rbTextoArq.isSelected()) {
+            txtEnderecoArq.setEnabled(false);
+            txtTextoBib.setEnabled(true);
+        } else if (rbEnderecoArq.isSelected()) {
+            txtEnderecoArq.setEnabled(true);
+            txtTextoBib.setEnabled(false);
+        }
+        
+    }//GEN-LAST:event_rbTextoArqActionPerformed
 
     /**
      * @param args the command line arguments
@@ -390,8 +407,6 @@ public class SplashForm extends javax.swing.JFrame
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSair;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JLabel lbImagem;
     private javax.swing.JMenu menuAcoes;
     private javax.swing.JMenu menuAjuda;
@@ -406,7 +421,9 @@ public class SplashForm extends javax.swing.JFrame
     private javax.swing.JPanel pnConteudo;
     private javax.swing.JPanel pnJanela;
     private javax.swing.JPanel pnTitulo;
-    private javax.swing.JTextField txtCaminhoArq;
+    private javax.swing.JRadioButton rbEnderecoArq;
+    private javax.swing.JRadioButton rbTextoArq;
+    private javax.swing.JTextField txtEnderecoArq;
     private javax.swing.JTextField txtTextoBib;
     // End of variables declaration//GEN-END:variables
 }
