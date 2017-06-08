@@ -5,10 +5,16 @@
  */
 package br.unesp.rc.bibsys.view;
 
+import java.awt.Desktop;
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -98,6 +104,7 @@ public class SplashForm extends javax.swing.JFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        txtTextoBib.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtTextoBib.setEnabled(false);
         txtTextoBib.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,6 +122,11 @@ public class SplashForm extends javax.swing.JFrame
         btnSair.setText("Sair");
 
         btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
         rbEnderecoArq.setEnabled(true);
         rbEnderecoArq.setSelected(true);
@@ -355,6 +367,18 @@ public class SplashForm extends javax.swing.JFrame
 //        }
         
     }//GEN-LAST:event_rbTextoArqActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File file = chooser.getSelectedFile();
+//            System.out.println("abriu o " + file.getName());
+//            //txtEnderecoArq
+            
+            txtEnderecoArq.setText(file.getPath());
+        }
+
+    }//GEN-LAST:event_btnPesquisarActionPerformed
 
     /**
      * @param args the command line arguments
