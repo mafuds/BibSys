@@ -6,13 +6,11 @@
             <file>file:/C:/Users/Mariana/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/view/SplashForm.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/dao/SystemOfA.java</file>
-            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/Imagem/telasplash.png</file>
+            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/utils/Conversor.java</file>
+            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/beans/Elemento.java</file>
             <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/view/SplashForm.java</file>
-            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/demo/BibSys.java</file>
-            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/view/JFramePrincipal.java</file>
-            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/utils/Inutil.java</file>
-            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/beans/Feijao.java</file>
+            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/main/BibSys.java</file>
+            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/view/JFrameConverter.java</file>
         </group>
     </open-files>
 </project-private>
