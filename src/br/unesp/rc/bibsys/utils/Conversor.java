@@ -6,16 +6,11 @@
 package br.unesp.rc.bibsys.utils;
 
 import br.unesp.rc.bibsys.beans.Elemento;
-import br.unesp.rc.bibsys.view.JFrameConvertido;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  *
@@ -78,19 +73,22 @@ public class Conversor
                             i = reader.read();
                             s = (char) i;
                         }
+//                        i = reader.read();
+//                        s = (char) i;
+                        break;
+//                    case '{':
+//                        break;
+                    default:
                         i = reader.read();
-                        s = (char) i;
-//                        System.out.println("dentro do case: " +s);
                         break;
                 }
-                  i = reader.read();
-//                System.out.println("final: " + s);
+//                i = reader.read();
             }
         }   catch (IOException ex) {
             System.out.println("Ocorreu um erro ao ler o arquivo! " + ex.getMessage());
         }
 
-//        System.out.println("ref: " + ref);
+        System.out.println("ref: " + e.getReferencia());
         
         return arquivo;
     }
