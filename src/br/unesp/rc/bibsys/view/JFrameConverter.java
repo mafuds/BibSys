@@ -345,6 +345,20 @@ public class JFrameConverter extends javax.swing.JFrame
             File arq1 = new File("arqTxtConverter.txt");
             Conversor conversor = new Conversor();
             File arqConvertido = conversor.converte(arq1);
+            
+            // abrir o JFrame de arquivo convertido
+            JFrame jfConvertido = new JFrameConvertido(arq1);
+            jfConvertido.pack();
+            jfConvertido.setVisible(true);
+            dispose();
+        }
+        
+        // Para o caso de ser um arquivo pronto
+        if (rbEnderecoArq.isSelected()) {
+            File arq1 = new File(txtEnderecoArq.getText());
+            Conversor conversor = new Conversor();
+            File arqConvertido = conversor.converte(arq1);
+            
             // abrir o JFrame de arquivo convertido
             JFrame jfConvertido = new JFrameConvertido(arq1);
             jfConvertido.pack();
