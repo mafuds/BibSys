@@ -26,8 +26,6 @@ import javax.swing.JFrame;
  */
 public class JFrameConverter extends javax.swing.JFrame
 {
-
-    File arq1 = null;
     /**
      * Creates new form SplashForm
      */
@@ -333,12 +331,6 @@ public class JFrameConverter extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConverterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConverterActionPerformed
-        // primeiro, verificar se o usuario entrou com um arquivo ou com texto na janelinha
-        
-        // fazer conversão
-        Conversor conversor = new Conversor();
-//        File arqConvertido = conversor.converte(arq1);
-        
         // Para o caso de ser um texto, abre um arquivo e escreve o conteúdo do campo nele
         if (rbTextoArq.isSelected()) {
             try {
@@ -348,13 +340,17 @@ public class JFrameConverter extends javax.swing.JFrame
             } catch (IOException e) {
                 System.out.println("Erro ao criar o arquivo. Mensagem: " + e.getMessage());
             } 
+            
+            // Daí agora faz a gambiarra pra ler esse arquivo e daí converter
+            File arq1 = new File("arqTxtConverter.txt");
+            Conversor conversor = new Conversor();
+            File arqConvertido = conversor.converte(arq1);
+            // abrir o JFrame de arquivo convertido
+            JFrame jfConvertido = new JFrameConvertido(arq1);
+            jfConvertido.pack();
+            jfConvertido.setVisible(true);
+            dispose();
         }
-        
-        // abrir o JFrame de arquivo convertido
-//        JFrame jfConvertido = new JFrameConvertido(arq1);
-//        jfConvertido.pack();
-//        jfConvertido.setVisible(true);
-        dispose();
     }//GEN-LAST:event_btnConverterActionPerformed
 
     private void menuItemConverterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConverterActionPerformed
@@ -420,7 +416,7 @@ public class JFrameConverter extends javax.swing.JFrame
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         JFileChooser chooser = new JFileChooser();
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            arq1 = chooser.getSelectedFile();
+            File arq1 = chooser.getSelectedFile();
 //            System.out.println("abriu o " + file.getName());
 //            //txtEnderecoArq
             
