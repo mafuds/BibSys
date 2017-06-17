@@ -5,28 +5,26 @@
  */
 package br.unesp.rc.bibsys.view;
 
-import br.unesp.rc.bibsys.utils.Conversor;
 import java.awt.Image;
 import java.io.File;
 import java.net.URL;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
 /**
  *
  * @author tuifm
  */
-public class SplashForm extends javax.swing.JFrame
+public class JFrameComparar extends javax.swing.JFrame
 {
 
     /**
      * Creates new form SplashForm
      */
-    public SplashForm()
+    public JFrameComparar()
     {
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
-        
     }
 
     /**
@@ -43,11 +41,13 @@ public class SplashForm extends javax.swing.JFrame
         lbTitulo = new javax.swing.JLabel();
         lbImagem = new javax.swing.JLabel();
         pnConteudo = new javax.swing.JPanel();
-        lbDescricao = new javax.swing.JLabel();
-        btnConverter = new javax.swing.JButton();
         btnComparar = new javax.swing.JButton();
-        btnConcatenar = new javax.swing.JButton();
-        btnOrdenar = new javax.swing.JButton();
+        btnMenu = new javax.swing.JButton();
+        txtEnderecoArq1 = new javax.swing.JTextField();
+        btnPesquisarArq1 = new javax.swing.JButton();
+        txtEnderecoArq2 = new javax.swing.JTextField();
+        btnPesquisarArq2 = new javax.swing.JButton();
+        lbDescricao = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         menuAcoes = new javax.swing.JMenu();
         menuItemConverter = new javax.swing.JMenuItem();
@@ -64,7 +64,7 @@ public class SplashForm extends javax.swing.JFrame
         setTitle("BibSys");
 
         lbTitulo.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        lbTitulo.setText("Bem vindo ao BibSys Tortoise!");
+        lbTitulo.setText("Comparar Arquivos");
 
         lbImagem.setBounds(10, 11, 414, 86);
         URL path = getClass().getResource("/Imagem/tartaruga.png");
@@ -82,9 +82,9 @@ public class SplashForm extends javax.swing.JFrame
         pnTituloLayout.setHorizontalGroup(
             pnTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnTituloLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(194, Short.MAX_VALUE)
                 .addComponent(lbTitulo)
-                .addGap(55, 55, 55)
+                .addGap(114, 114, 114)
                 .addComponent(lbImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -94,78 +94,86 @@ public class SplashForm extends javax.swing.JFrame
                 .addComponent(lbImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 11, Short.MAX_VALUE))
             .addGroup(pnTituloLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(25, 25, 25)
                 .addComponent(lbTitulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        lbDescricao.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbDescricao.setText("O que deseja fazer?");
-
-        btnConverter.setText("<html>Converter arquivo</html>");
-        btnConverter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConverterActionPerformed(evt);
-            }
-        });
-
-        btnComparar.setText("<html>Comparar arquivos</html>");
+        btnComparar.setText("Comparar");
         btnComparar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCompararActionPerformed(evt);
             }
         });
 
-        btnConcatenar.setText("<html>Concatenar arquivos</html>");
-        btnConcatenar.addActionListener(new java.awt.event.ActionListener() {
+        btnMenu.setText("Menu Principal");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConcatenarActionPerformed(evt);
+                btnMenuActionPerformed(evt);
             }
         });
 
-        btnOrdenar.setText("<html>Ordenar arquivos</html>");
-        btnOrdenar.addActionListener(new java.awt.event.ActionListener() {
+        btnPesquisarArq1.setText("Pesquisar");
+        btnPesquisarArq1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOrdenarActionPerformed(evt);
+                btnPesquisarArq1ActionPerformed(evt);
             }
         });
+
+        btnPesquisarArq2.setText("Pesquisar");
+        btnPesquisarArq2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarArq2ActionPerformed(evt);
+            }
+        });
+
+        lbDescricao.setText("Por favor, selecione dois arquivos para serem comparados.");
 
         javax.swing.GroupLayout pnConteudoLayout = new javax.swing.GroupLayout(pnConteudo);
         pnConteudo.setLayout(pnConteudoLayout);
         pnConteudoLayout.setHorizontalGroup(
             pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(btnMenu)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 312, Short.MAX_VALUE)
+                .addComponent(btnComparar)
+                .addGap(35, 35, 35))
             .addGroup(pnConteudoLayout.createSequentialGroup()
-                .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnConteudoLayout.createSequentialGroup()
-                        .addGap(214, 214, 214)
-                        .addComponent(lbDescricao))
-                    .addGroup(pnConteudoLayout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(pnConteudoLayout.createSequentialGroup()
-                                .addComponent(btnConverter, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(72, 72, 72)
-                                .addComponent(btnComparar, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnConteudoLayout.createSequentialGroup()
-                                .addComponent(btnConcatenar, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(txtEnderecoArq1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPesquisarArq1)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtEnderecoArq2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPesquisarArq2)
+                .addContainerGap())
+            .addGroup(pnConteudoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbDescricao)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnConteudoLayout.setVerticalGroup(
             pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnConteudoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbDescricao)
-                .addGap(45, 45, 45)
+                .addGap(28, 28, 28)
                 .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnConverter, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnComparar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                    .addComponent(txtEnderecoArq1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisarArq1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnConcatenar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(65, Short.MAX_VALUE))
+                    .addComponent(txtEnderecoArq2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisarArq2))
+                .addGap(94, 94, 94)
+                .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnComparar)
+                    .addComponent(btnMenu))
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout pnJanelaLayout = new javax.swing.GroupLayout(pnJanela);
@@ -185,7 +193,7 @@ public class SplashForm extends javax.swing.JFrame
                 .addContainerGap()
                 .addComponent(pnTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnConteudo, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
+                .addComponent(pnConteudo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -269,12 +277,16 @@ public class SplashForm extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnJanela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCompararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompararActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCompararActionPerformed
 
     private void menuItemConverterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConverterActionPerformed
         // TODO add your handling code here:
@@ -304,38 +316,34 @@ public class SplashForm extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_menuItemCompararActionPerformed
 
-    private void btnConverterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConverterActionPerformed
-        // TODO add your handling code here:
-//        new JFrameConverter();
-        JFrame jfConverter = new JFrameConverter();
-        jfConverter.pack();
-        jfConverter.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnConverterActionPerformed
+    private void btnPesquisarArq1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarArq1ActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File file = chooser.getSelectedFile();
+//            System.out.println("abriu o " + file.getName());
+//            //txtEnderecoArq
+            
+            txtEnderecoArq1.setText(file.getPath());
+        }
 
-    private void btnCompararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompararActionPerformed
-        // TODO add your handling code here:
-        JFrame jfComparar = new JFrameComparar();
-        jfComparar.pack();
-        jfComparar.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnCompararActionPerformed
+    }//GEN-LAST:event_btnPesquisarArq1ActionPerformed
 
-    private void btnConcatenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConcatenarActionPerformed
+    private void btnPesquisarArq2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarArq2ActionPerformed
         // TODO add your handling code here:
-        JFrame jfConcatenar = new JFrameConcatenar();
-        jfConcatenar.pack();
-        jfConcatenar.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnConcatenarActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File file = chooser.getSelectedFile();            
+            txtEnderecoArq2.setText(file.getPath());
+        }
+    }//GEN-LAST:event_btnPesquisarArq2ActionPerformed
 
-    private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         // TODO add your handling code here:
-        JFrame jfOrdenar = new JFrameOrdenar();
-        jfOrdenar.pack();
-        jfOrdenar.setVisible(true);
+        JFrame jfMenu = new SplashForm();
+        jfMenu.pack();
+        jfMenu.setVisible(true);
         dispose();
-    }//GEN-LAST:event_btnOrdenarActionPerformed
+    }//GEN-LAST:event_btnMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -359,17 +367,32 @@ public class SplashForm extends javax.swing.JFrame
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(SplashForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameComparar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(SplashForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameComparar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(SplashForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameComparar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(SplashForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameComparar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -377,18 +400,7 @@ public class SplashForm extends javax.swing.JFrame
         {
             public void run()
             {
-                File file = new File("bib1.bib");
-                Conversor.converte(file);
-                try
-                {
-                    // trocar pra 5000 depois  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    Thread.sleep(1000);
-                }
-                catch(Exception e)
-                {
-                    
-                }
-                new SplashForm().setVisible(true);
+                new JFrameComparar().setVisible(true);
             }
         });
     }
@@ -396,9 +408,9 @@ public class SplashForm extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton btnComparar;
-    private javax.swing.JButton btnConcatenar;
-    private javax.swing.JButton btnConverter;
-    private javax.swing.JButton btnOrdenar;
+    private javax.swing.JButton btnMenu;
+    private javax.swing.JButton btnPesquisarArq1;
+    private javax.swing.JButton btnPesquisarArq2;
     private javax.swing.JLabel lbDescricao;
     private javax.swing.JLabel lbImagem;
     private javax.swing.JLabel lbTitulo;
@@ -415,5 +427,7 @@ public class SplashForm extends javax.swing.JFrame
     private javax.swing.JPanel pnConteudo;
     private javax.swing.JPanel pnJanela;
     private javax.swing.JPanel pnTitulo;
+    private javax.swing.JTextField txtEnderecoArq1;
+    private javax.swing.JTextField txtEnderecoArq2;
     // End of variables declaration//GEN-END:variables
 }
