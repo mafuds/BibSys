@@ -377,7 +377,7 @@ public class SplashForm extends javax.swing.JFrame
         {
             public void run()
             {
-                File file = new File("C:\\Users\\maria\\Documents\\bib1.bib");
+                File file = new File("bib1.bib");
                 Conversor.converte(file);
                 try
                 {

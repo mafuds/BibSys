@@ -41,19 +41,65 @@ public class Conversor
         }
         return conteudo.toString();
     }
-
+    
     static public File converte(File arquivo) {
+        String ref = "";
+        Elemento e = new Elemento();
         HashMap<String, String> hm = new HashMap<>();
-        
+        int i;
         try (BufferedReader reader = new BufferedReader(new FileReader(arquivo))) {
-            char s;
-            while ((s = (char) reader.read()) != -1) {
+            i = reader.read();
+            while (i != -1) {
+                char s = (char) i;
+                System.out.println("antes do switch: i: " + i + " - s: " + Character.toString ((char) i));
+                switch (s) {
+                    // testa se eh a primeira linha (@article, por ex)
+                    case '@':
+                        // lê proximo char
+                        i = reader.read();
+                        s = (char) i;
+                        // le chars e escreve em ref até que acabem as letras
+                        while (i != -1 && ((i >= 'a' && i <= 'z') || (i >= 'A' && i <= 'Z'))) {
+                            ref = ref + s;
+                            i = reader.read();
+                            s = (char) i;
+                        }
+                        e.setReferencia(ref);
+                        break;
+                    case ' ':
+                    case '\n':
+                    case '\r':
+                        // ignora caso tenham espaços em branco
+                        while (s == ' ') {
+                            i = reader.read();
+                            s = (char) i;
+                        }
+                        break;
+                    case '{':
+                        System.out.println("entrou no case {");
+                        // ignora o que vem depois do {
+                        while (s != ',' || s == ' ') {
+                            // esse while percorre (pra ignorar) até o final da primeira linha
+                            System.out.println("while de dentro " + s);
+                            i = reader.read();
+                            s = (char) i;
+                        }
+                        i = reader.read();
+                        s = (char) i;
+                        System.out.println("dentro do case: " +s);
+                        break;
+//                    default:
+//                        i = reader.read();
+//                        break;
+                }
                 
+//                System.out.println("final: " + s);
             }
         }   catch (IOException ex) {
             System.out.println("Ocorreu um erro ao ler o arquivo! " + ex.getMessage());
         }
 
+//        System.out.println("ref: " + ref);
         
         return arquivo;
     }
