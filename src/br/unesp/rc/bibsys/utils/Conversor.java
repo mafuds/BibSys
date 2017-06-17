@@ -51,7 +51,7 @@ public class Conversor
             i = reader.read();
             while (i != -1) {
                 char s = (char) i;
-                System.out.println("antes do switch: i: " + i + " - s: " + Character.toString ((char) i));
+                System.out.println("antes do switch: i: " + i + " - s: " + Character.toString ((char) i)); // sendo i o código ascii do caracter lido
                 switch (s) {
                     // testa se eh a primeira linha (@article, por ex)
                     case '@':
@@ -66,19 +66,13 @@ public class Conversor
                         }
                         e.setReferencia(ref);
                         break;
+                    case '\r':
                     case ' ':
                     case '\n':
-                    case '\r':
-                        // ignora caso tenham espaços em branco
-                        while (s == ' ') {
-                            i = reader.read();
-                            s = (char) i;
-                        }
-                        break;
                     case '{':
-                        System.out.println("entrou no case {");
+//                        System.out.println("entrou no case {");
                         // ignora o que vem depois do {
-                        while (s != ',' || s == ' ') {
+                        while (i != -1 && (s != ',' || s == ' ')) {
                             // esse while percorre (pra ignorar) até o final da primeira linha
                             System.out.println("while de dentro " + s);
                             i = reader.read();
@@ -86,13 +80,10 @@ public class Conversor
                         }
                         i = reader.read();
                         s = (char) i;
-                        System.out.println("dentro do case: " +s);
+//                        System.out.println("dentro do case: " +s);
                         break;
-//                    default:
-//                        i = reader.read();
-//                        break;
                 }
-                
+                  i = reader.read();
 //                System.out.println("final: " + s);
             }
         }   catch (IOException ex) {
