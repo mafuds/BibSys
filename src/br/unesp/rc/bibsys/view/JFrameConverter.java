@@ -8,7 +8,13 @@ package br.unesp.rc.bibsys.view;
 import br.unesp.rc.bibsys.utils.Conversor;
 import java.awt.Image;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -37,14 +43,14 @@ public class JFrameConverter extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         pnJanela = new javax.swing.JPanel();
         pnTitulo = new javax.swing.JPanel();
         lbTitulo = new javax.swing.JLabel();
         lbImagem = new javax.swing.JLabel();
         pnConteudo = new javax.swing.JPanel();
-        txtTextoBib = new javax.swing.JTextField();
         btnConverter = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
         txtEnderecoArq = new javax.swing.JTextField();
@@ -52,6 +58,8 @@ public class JFrameConverter extends javax.swing.JFrame
         ButtonGroup buttonGroup = new ButtonGroup();
         rbEnderecoArq = new javax.swing.JRadioButton();
         rbTextoArq = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtTextoBib = new javax.swing.JTextArea();
         barraMenu = new javax.swing.JMenuBar();
         menuAcoes = new javax.swing.JMenu();
         menuItemConverter = new javax.swing.JMenuItem();
@@ -103,31 +111,29 @@ public class JFrameConverter extends javax.swing.JFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        txtTextoBib.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtTextoBib.setEnabled(false);
-        txtTextoBib.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTextoBibActionPerformed(evt);
-            }
-        });
-
         btnConverter.setText("Converter");
-        btnConverter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnConverter.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnConverterActionPerformed(evt);
             }
         });
 
         btnMenu.setText("Menu Principal");
-        btnMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnMenu.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnMenuActionPerformed(evt);
             }
         });
 
         btnPesquisar.setText("Pesquisar");
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnPesquisarActionPerformed(evt);
             }
         });
@@ -135,20 +141,28 @@ public class JFrameConverter extends javax.swing.JFrame
         rbEnderecoArq.setEnabled(true);
         rbEnderecoArq.setSelected(true);
         rbEnderecoArq.setText("Caminho do arquivo:");
-        rbEnderecoArq.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        rbEnderecoArq.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 rbEnderecoArqActionPerformed(evt);
             }
         });
         buttonGroup.add(rbEnderecoArq);
 
         rbTextoArq.setText("Texto a ser convertido:");
-        rbTextoArq.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        rbTextoArq.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 rbTextoArqActionPerformed(evt);
             }
         });
         buttonGroup.add(rbTextoArq);
+
+        txtTextoBib.setColumns(20);
+        txtTextoBib.setRows(5);
+        jScrollPane1.setViewportView(txtTextoBib);
 
         javax.swing.GroupLayout pnConteudoLayout = new javax.swing.GroupLayout(pnConteudo);
         pnConteudo.setLayout(pnConteudoLayout);
@@ -157,24 +171,24 @@ public class JFrameConverter extends javax.swing.JFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(btnMenu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 363, Short.MAX_VALUE)
                 .addComponent(btnConverter)
                 .addGap(35, 35, 35))
             .addGroup(pnConteudoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTextoBib, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
-                        .addComponent(txtEnderecoArq)
+                    .addGroup(pnConteudoLayout.createSequentialGroup()
+                        .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEnderecoArq, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPesquisar)))
+                        .addComponent(btnPesquisar))
+                    .addGroup(pnConteudoLayout.createSequentialGroup()
+                        .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbEnderecoArq)
+                            .addComponent(rbTextoArq))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(pnConteudoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbEnderecoArq)
-                    .addComponent(rbTextoArq))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnConteudoLayout.setVerticalGroup(
             pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +202,7 @@ public class JFrameConverter extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(rbTextoArq)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTextoBib, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConverter)
@@ -220,24 +234,30 @@ public class JFrameConverter extends javax.swing.JFrame
         menuAcoes.setText("Ações");
 
         menuItemConverter.setText("Converter");
-        menuItemConverter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuItemConverter.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuItemConverterActionPerformed(evt);
             }
         });
         menuAcoes.add(menuItemConverter);
 
         menuItemConcatenar.setText("Concatenar");
-        menuItemConcatenar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuItemConcatenar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuItemConcatenarActionPerformed(evt);
             }
         });
         menuAcoes.add(menuItemConcatenar);
 
         menuItemComparar.setText("Comparar");
-        menuItemComparar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuItemComparar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuItemCompararActionPerformed(evt);
             }
         });
@@ -248,16 +268,20 @@ public class JFrameConverter extends javax.swing.JFrame
         menuSobre.setText("Sobre");
 
         menuItemVersao.setText("Versão do sistema");
-        menuItemVersao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuItemVersao.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuItemVersaoActionPerformed(evt);
             }
         });
         menuSobre.add(menuItemVersao);
 
         menuItemAutores.setText("Autores");
-        menuItemAutores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuItemAutores.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuItemAutoresActionPerformed(evt);
             }
         });
@@ -268,16 +292,20 @@ public class JFrameConverter extends javax.swing.JFrame
         menuAjuda.setText("Ajuda");
 
         menuItemInstrucoes.setText("Instruções");
-        menuItemInstrucoes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuItemInstrucoes.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuItemInstrucoesActionPerformed(evt);
             }
         });
         menuAjuda.add(menuItemInstrucoes);
 
         menuItemFaleConosco.setText("Fale conosco");
-        menuItemFaleConosco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuItemFaleConosco.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuItemFaleConoscoActionPerformed(evt);
             }
         });
@@ -311,16 +339,23 @@ public class JFrameConverter extends javax.swing.JFrame
         Conversor conversor = new Conversor();
 //        File arqConvertido = conversor.converte(arq1);
         
+        // Para o caso de ser um texto, abre um arquivo e escreve o conteúdo do campo nele
+        if (rbTextoArq.isSelected()) {
+            try {
+                PrintWriter arqConteudoEscrito = new PrintWriter("arqTxtConverter.txt","UTF-8");
+                arqConteudoEscrito.println(txtTextoBib.getText());
+                arqConteudoEscrito.close();
+            } catch (IOException e) {
+                System.out.println("Erro ao criar o arquivo. Mensagem: " + e.getMessage());
+            } 
+        }
+        
         // abrir o JFrame de arquivo convertido
-        JFrame jfConvertido = new JFrameConvertido(arq1);
-        jfConvertido.pack();
-        jfConvertido.setVisible(true);
+//        JFrame jfConvertido = new JFrameConvertido(arq1);
+//        jfConvertido.pack();
+//        jfConvertido.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnConverterActionPerformed
-
-    private void txtTextoBibActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTextoBibActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTextoBibActionPerformed
 
     private void menuItemConverterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConverterActionPerformed
         // TODO add your handling code here:
@@ -453,6 +488,7 @@ public class JFrameConverter extends javax.swing.JFrame
     private javax.swing.JButton btnConverter;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnPesquisar;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbImagem;
     private javax.swing.JLabel lbTitulo;
     private javax.swing.JMenu menuAcoes;
@@ -471,6 +507,6 @@ public class JFrameConverter extends javax.swing.JFrame
     private javax.swing.JRadioButton rbEnderecoArq;
     private javax.swing.JRadioButton rbTextoArq;
     private javax.swing.JTextField txtEnderecoArq;
-    private javax.swing.JTextField txtTextoBib;
+    private javax.swing.JTextArea txtTextoBib;
     // End of variables declaration//GEN-END:variables
 }
