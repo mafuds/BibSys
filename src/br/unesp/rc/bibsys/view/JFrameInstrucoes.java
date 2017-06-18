@@ -341,7 +341,7 @@ public class JFrameInstrucoes extends javax.swing.JFrame
     }//GEN-LAST:event_menuItemInstrucoesActionPerformed
 
     private void menuItemFaleConoscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemFaleConoscoActionPerformed
-        JFrame jfFaleConosco = new JFrameInstrucoes();
+        JFrame jfFaleConosco = new JFrameFaleConosco();
         jfFaleConosco.pack();
         jfFaleConosco.setVisible(true);
         dispose();
