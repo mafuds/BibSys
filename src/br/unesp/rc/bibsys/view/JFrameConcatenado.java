@@ -6,14 +6,12 @@
 package br.unesp.rc.bibsys.view;
 
 import br.unesp.rc.bibsys.utils.ArquivoUtils;
-import br.unesp.rc.bibsys.utils.OperacaoUtils;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -21,14 +19,14 @@ import javax.swing.JOptionPane;
  *
  * @author tuifm
  */
-public class JFrameConvertido extends javax.swing.JFrame
+public class JFrameConcatenado extends javax.swing.JFrame
 {
 //    File arqConvertido;
     
     /**
      * Creates new form JFrameConvertido
      */
-    public JFrameConvertido()
+    public JFrameConcatenado()
     {
         initComponents();
     }
@@ -37,7 +35,7 @@ public class JFrameConvertido extends javax.swing.JFrame
      * Creates new form JFrameConvertido
      * @param arqConvertido
      */
-    public JFrameConvertido(String arqConvertido)
+    public JFrameConcatenado(String arqConvertido)
     {
         initComponents();
         File arq = new File(arqConvertido);
@@ -46,7 +44,7 @@ public class JFrameConvertido extends javax.swing.JFrame
     
     private void loadTxtEndereco(File arq) {
         String conteudo = ArquivoUtils.lerArquivo(arq);
-        System.out.println(conteudo);
+//        System.out.println(conteudo);
         txtArquivo.setText(conteudo);
     }
     /**
@@ -82,7 +80,7 @@ public class JFrameConvertido extends javax.swing.JFrame
         setTitle("BibSys");
 
         lbTitulo.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        lbTitulo.setText("Arquivo convertido");
+        lbTitulo.setText("Arquivo concatenado");
 
         lbImagem.setBounds(10, 11, 414, 86);
         URL path = getClass().getResource("/Imagem/tartaruga.png");
@@ -270,7 +268,7 @@ public class JFrameConvertido extends javax.swing.JFrame
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
-        String nomeSalvarArq = "src\\Arquivos\\arquivoConvertido.bib";
+        String nomeSalvarArq = "src\\Arquivos\\arquivoConcatenado.bib";
         String mensagem = "Ocorreu um erro ao salvar o arquivo. ";
         try {
             PrintWriter novoArq = new PrintWriter(nomeSalvarArq, "UTF-8");
@@ -347,17 +345,21 @@ public class JFrameConvertido extends javax.swing.JFrame
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(JFrameConvertido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameConcatenado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(JFrameConvertido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameConcatenado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(JFrameConvertido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameConcatenado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(JFrameConvertido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameConcatenado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -368,7 +370,7 @@ public class JFrameConvertido extends javax.swing.JFrame
         {
             public void run()
             {
-                new JFrameConvertido().setVisible(true);
+                new JFrameConcatenado().setVisible(true);
             }
         });
     }

@@ -5,13 +5,15 @@
  */
 package br.unesp.rc.bibsys.view;
 
-import br.unesp.rc.bibsys.utils.Conversor;
+import br.unesp.rc.bibsys.utils.ArquivoUtils;
+import br.unesp.rc.bibsys.utils.OperacaoUtils;
 import java.awt.Image;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
 import java.awt.TrayIcon;
 import java.io.File;
 import java.net.URL;
+import javafx.stage.DirectoryChooser;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -382,16 +384,29 @@ public class SplashForm extends javax.swing.JFrame
         java.awt.EventQueue.invokeLater(new Runnable()
         {
             public void run() {
-//                File file = new File("bib1.bib");
-//                Conversor.converte(file);
+                ArquivoUtils.criaDiretorio("src\\tmp");
+                ArquivoUtils.criaDiretorio("src\\Arquivos");
+                
                 try {
                     // trocar pra 5000 depois  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     Thread.sleep(1000);
-                }
-                catch(Exception e) {
-                    
+                } catch(Exception ex) {
+                    System.out.println("Erro! " + ex.getMessage());
                 }
                 new SplashForm().setVisible(true);
+            }
+        });
+        
+        // Apaga arquivos criados na pasta de temporarios
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run() { 
+                File dir = new File("src\\tmp");
+                for (File file : dir.listFiles()) {
+                    if (!file.isDirectory()) {
+                        file.delete();
+                    }
+                }
             }
         });
     }

@@ -5,6 +5,7 @@
  */
 package br.unesp.rc.bibsys.view;
 
+import br.unesp.rc.bibsys.utils.OperacaoUtils;
 import java.awt.Image;
 import java.io.File;
 import java.net.URL;
@@ -285,7 +286,21 @@ public class JFrameComparar extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCompararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompararActionPerformed
-        // TODO add your handling code here:
+
+        String nomeArq;
+        File arq1 = new File(txtEnderecoArq1.getText());
+        File arq2 = new File(txtEnderecoArq2.getText());
+        
+//        nomeArq = OperacaoUtils.comparar(arq1, arq2);
+
+        // passar uma string pro jframe comparado
+
+        // abrir o JFrame de arquivo convertido
+        JFrame jfComparado = new JFrameComparado();
+        jfComparado.pack();
+        jfComparado.setVisible(true);
+        dispose();
+        
     }//GEN-LAST:event_btnCompararActionPerformed
 
     private void menuItemConverterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConverterActionPerformed
@@ -317,20 +332,15 @@ public class JFrameComparar extends javax.swing.JFrame
     }//GEN-LAST:event_menuItemCompararActionPerformed
 
     private void btnPesquisarArq1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarArq1ActionPerformed
-        JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser("src\\Arquivos");
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File file = chooser.getSelectedFile();
-//            System.out.println("abriu o " + file.getName());
-//            //txtEnderecoArq
-            
             txtEnderecoArq1.setText(file.getPath());
         }
-
     }//GEN-LAST:event_btnPesquisarArq1ActionPerformed
 
     private void btnPesquisarArq2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarArq2ActionPerformed
-        // TODO add your handling code here:
-        JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser("src\\Arquivos");
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File file = chooser.getSelectedFile();            
             txtEnderecoArq2.setText(file.getPath());

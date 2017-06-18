@@ -5,7 +5,7 @@
  */
 package br.unesp.rc.bibsys.view;
 
-import br.unesp.rc.bibsys.utils.Conversor;
+import br.unesp.rc.bibsys.utils.OperacaoUtils;
 import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.File;

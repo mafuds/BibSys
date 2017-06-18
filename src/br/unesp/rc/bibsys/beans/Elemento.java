@@ -18,11 +18,8 @@ public class Elemento {
     // este é o autor:ano que aparece depois da chave {
     private String autor;
     private int ano;
-    // nome da tag (autor, ano, volume)
-    private String nomeTag;
-    // valor da tag
-    private String contTag;
-    
+    private String bibkey;
+    // hashmap ira unir o nome e o valor da tag (autor, ano, volume)
     private HashMap<String, String> valores;
 
     /**
@@ -37,34 +34,6 @@ public class Elemento {
      */
     public void setReferencia(String referencia) {
         this.referencia = referencia;
-    }
-
-    /**
-     * @return the nomeTag
-     */
-    public String getNomeTag() {
-        return nomeTag;
-    }
-
-    /**
-     * @param nomeTag the nomeTag to set
-     */
-    public void setNomeTag(String nomeTag) {
-        this.nomeTag = nomeTag;
-    }
-
-    /**
-     * @return the contTag
-     */
-    public String getContTag() {
-        return contTag;
-    }
-
-    /**
-     * @param contTag the contTag to set
-     */
-    public void setContTag(String contTag) {
-        this.contTag = contTag;
     }
 
     /**
@@ -112,5 +81,19 @@ public class Elemento {
 //    public void setValores(String chave, String valor) {
 //        this.valores.put(chave, valor);
 //    }
+
+    /**
+     * @return the bibkey
+     */
+    public String getBibkey() {
+        return bibkey;
+    }
+
+    /**
+     * @param bibkey the bibkey to set
+     */
+    public void setBibkey(String bibkey) {
+        this.bibkey = bibkey;
+    }
 
 }
