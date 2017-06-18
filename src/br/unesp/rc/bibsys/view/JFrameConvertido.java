@@ -8,6 +8,8 @@ package br.unesp.rc.bibsys.view;
 import br.unesp.rc.bibsys.utils.Conversor;
 import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -32,16 +34,16 @@ public class JFrameConvertido extends javax.swing.JFrame
      * Creates new form JFrameConvertido
      * @param arqConvertido
      */
-    public JFrameConvertido(File arqConvertido)
+    public JFrameConvertido(String arqConvertido)
     {
         initComponents();
-        loadTxtEndereco(arqConvertido);
+        File arq = new File(arqConvertido);
+        loadTxtEndereco(arq);
     }
     
     private void loadTxtEndereco(File arq) {
         String conteudo = Conversor.lerArquivo(arq);
-        Conversor.converte(arq);
-//        content.append("</html>");
+        System.out.println(conteudo);
         txtArquivo.setText(conteudo);
     }
     /**
@@ -264,7 +266,17 @@ public class JFrameConvertido extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
+
+        String nomeSalvarArq = "src\\Arquivos\\arquivoConvertido.bib";
+
+        try {
+            PrintWriter novoArq = new PrintWriter(nomeSalvarArq, "UTF-8");
+            novoArq.print(txtArquivo.getText());
+            novoArq.close();
+        } catch (IOException e) {
+            System.out.println("Erro ao criar o arquivo. Mensagem: " + e.getMessage());
+        }
+
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void menuItemConverterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConverterActionPerformed
@@ -346,7 +358,6 @@ public class JFrameConvertido extends javax.swing.JFrame
         {
             public void run()
             {
-                System.out.println("oioi");
                 new JFrameConvertido().setVisible(true);
             }
         });

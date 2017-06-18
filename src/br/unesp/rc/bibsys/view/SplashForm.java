@@ -12,6 +12,7 @@ import java.awt.SystemTray;
 import java.awt.TrayIcon;
 import java.io.File;
 import java.net.URL;
+import javafx.stage.DirectoryChooser;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -382,8 +383,8 @@ public class SplashForm extends javax.swing.JFrame
         java.awt.EventQueue.invokeLater(new Runnable()
         {
             public void run() {
-                File file = new File("bib1.bib");
-                Conversor.converte(file);
+//                File file = new File("bib1.bib");
+//                Conversor.converte(file);
                 try {
                     // trocar pra 5000 depois  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     Thread.sleep(1000);
@@ -392,6 +393,19 @@ public class SplashForm extends javax.swing.JFrame
                     
                 }
                 new SplashForm().setVisible(true);
+            }
+        });
+        
+        // Apaga arquivos criados na pasta de temporarios
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run() { 
+                File dir = new File("src\\tmp");
+                for (File file : dir.listFiles()) {
+                    if (!file.isDirectory()) {
+                        file.delete();
+                    }
+                }
             }
         });
     }

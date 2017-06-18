@@ -10,8 +10,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -40,25 +42,34 @@ public class Conversor
     
     static private String trataAutor(String autor) {
         String autorFormatado = "";
-        String [] array;
-        array = autor.split("and");
+        String [] array1;
+        String [] array2;
+        array1 = autor.split("and");
         
-        switch (array.length) {
+        switch (array1.length) {
             case 0:
                 System.out.println("Erro! Deve haver um autor.");
                 break;
             case 1:
-                autorFormatado = array[0].split(",")[0].toLowerCase();
+                autorFormatado = array1[0].split(",")[0].trim();
+                array2 = autorFormatado.split(" ");
+                autorFormatado = array2[array2.length-1].toLowerCase().trim();
                 break;
             case 2:
                 String str = "";
-                autorFormatado = array[0].split(",")[0].toLowerCase();
-                str = array[1].split(",")[0].toLowerCase();
+                autorFormatado = array1[0].split(",")[0].trim();
+                array2 = autorFormatado.split(" ");
+                autorFormatado = array2[array2.length-1].toLowerCase().trim();
+                str = array1[1].split(",")[0].trim();
+                array2 = str.split(" ");
+                str = array2[array2.length-1].toLowerCase().trim();
                 autorFormatado = autorFormatado + "." + str;
                 break;
             default:
-                if (array.length >= 3) {
-                    autorFormatado = array[0].split(",")[0].toLowerCase();
+                if (array1.length >= 3) {
+                    autorFormatado = array1[0].split(",")[0].trim();
+                    array2 = autorFormatado.split(" ");
+                    autorFormatado = array2[array2.length-1].toLowerCase().trim();
                     autorFormatado = autorFormatado + "etal";
                 }
                 break;
@@ -76,7 +87,6 @@ public class Conversor
         try (BufferedReader reader = new BufferedReader(new FileReader(arquivo))) {
             linha = reader.readLine();
             while (linha != null) {
-//                System.out.println("-------------------\nnova referencia");
                 // testo se é inicio de uma nova referencia
                 if (linha.matches("\\s*[@].*")) {
                     // declaro as variaveis que serão necessárias para salvar a referencia
@@ -196,6 +206,7 @@ public class Conversor
                     if (!hm.isEmpty()) {
                         e.setValores(hm);
                     }
+                    e.setBibkey(e.getAutor() + ":" + e.getAno());
                     lista.add(e);
                 }
 //                System.out.println("linha: " + linha);
@@ -209,17 +220,34 @@ public class Conversor
         return lista;
     }
     
-    static public File converte(File arquivo) {
+    static public String converte(File arquivo) {
         ArrayList<Elemento> lista = new ArrayList<>();
+        HashMap<String, String> hm = new HashMap<>();
         lista = Conversor.lerDados(arquivo);
-//
-        for (Elemento elemento : lista) {
-//            System.out.println(elemento.getReferencia());
-            System.out.println(elemento.getAutor());
-            System.out.println(elemento.getAno());
-        }
+        String nomeNovoArq = "src\\tmp\\arquivoTmpConvertido.bib";
         
-        return arquivo;
+        try {
+            PrintWriter novoArq = new PrintWriter(nomeNovoArq, "UTF-8");
+            
+            for (Elemento elemento : lista) {
+                novoArq.println("@" + elemento.getReferencia() + "{" + 
+                        elemento.getBibkey());
+                hm = elemento.getValores();
+                for (Map.Entry<String, String> entry : hm.entrySet()) {
+                    String key = entry.getKey();
+                    key = String.format("%1$-16s", key);
+                    String value = entry.getValue();
+                    novoArq.println("  " + key + "=  {" + value + "},");
+                }
+                novoArq.println("}\n");
+            }
+            
+            novoArq.close();
+        } catch (IOException e) {
+            System.out.println("Erro ao criar o arquivo. Mensagem: " + e.getMessage());
+        } 
+        
+        return nomeNovoArq;
     }
     
 }
