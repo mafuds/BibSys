@@ -304,7 +304,7 @@ public class JFrameConverter extends javax.swing.JFrame
 
     private void btnConverterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConverterActionPerformed
         // Para o caso de ser um texto, abre um arquivo e escreve o conteúdo do campo nele
-        String caminhoArq = "src\\tmp\\arquivoTextoConverter.bib";
+        String caminhoArq = "src\\tmp\\arquivoParaConverter.bib";
         if (rbTextoArq.isSelected()) {
             try {
                 PrintWriter arqConteudoEscrito = new PrintWriter(caminhoArq, "UTF-8");

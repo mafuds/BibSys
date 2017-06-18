@@ -10,8 +10,6 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -271,14 +269,15 @@ public class JFrameOrdenar extends javax.swing.JFrame
 
     private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
         File arq = new File(txtEnderecoArq1.getText());
+        String arqOrdenado = "";
         
         try {
-            OperacaoUtils.ordenar(arq);
+            arqOrdenado = OperacaoUtils.ordenar(arq);
         } catch (IOException ex) {
             System.out.println("Erro ao ler arquivo. " + ex.getMessage());
         }
         
-        JFrame jfOrdenado = new JFrameOrdenado();
+        JFrame jfOrdenado = new JFrameOrdenado(arqOrdenado);
         jfOrdenado.pack();
         jfOrdenado.setVisible(true);
         dispose();
@@ -334,12 +333,9 @@ public class JFrameOrdenar extends javax.swing.JFrame
     }//GEN-LAST:event_menuItemCompararActionPerformed
 
     private void btnPesquisarArq1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarArq1ActionPerformed
-        JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser("src\\Arquivos");
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File file = chooser.getSelectedFile();
-//            System.out.println("abriu o " + file.getName());
-//            //txtEnderecoArq
-            
             txtEnderecoArq1.setText(file.getPath());
         }
 

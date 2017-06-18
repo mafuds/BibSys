@@ -7,14 +7,10 @@ package br.unesp.rc.bibsys.utils;
 
 import br.unesp.rc.bibsys.beans.Elemento;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import static java.util.Comparator.comparing;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -28,8 +24,12 @@ public class OperacaoUtils
     }
         
     static public String converte(File arquivo) {
+
         ArrayList<Elemento> lista = ParserUtils.lerDados(arquivo);
-        String nomeNovoArq = "src\\tmp\\arquivoTmpConvertido.bib";
+//        String nomeArq = arquivo.getName();
+//        nomeArq = ;
+        String nomeNovoArq = "src\\tmp\\"+arquivo.getName().substring(0, arquivo.getName().length()-4)
+                +"-formatado.bib";
         
         ArquivoUtils.escreveArquivo(nomeNovoArq, lista);
         
@@ -38,7 +38,12 @@ public class OperacaoUtils
     
     
     static public String concatenar(File arq1, File arq2) {
-        String nomeNovoArq = "src\\tmp\\arquivoTmpConcatenado.bib";
+        // garante que o diretorio do arquivo resultante existe
+        ArquivoUtils.criaDiretorio("src\\Arquivos\\Concatenacao");
+
+        String nomeNovoArq = "src\\tmp\\"+
+                arq1.getName().substring(0, arq1.getName().length()-4)
+                +"-"+arq2.getName().substring(0, arq2.getName().length()-4)+"-concatenados.bib";
         
         // le os arquivos e coloca em arraylist
         ArrayList<Elemento> listaArq1 = ParserUtils.lerDados(arq1);
@@ -53,17 +58,24 @@ public class OperacaoUtils
     }
     
     static public void comparar(File arq1, File arq2) throws IOException {
-        ArquivoUtils.criaDiretorio("src\\Arquivos\\Comparacao"); // cria o diretório onde será salvo o arquivo resultante
-        File arqResultante = new File("src\\Arquivos\\Comparacao\\arqResultante.txt"); // abre o arquivo resultante
-        FileWriter fw = new FileWriter(arqResultante.getAbsoluteFile());
-        PrintWriter pw = new PrintWriter(fw);
+        // garante que o diretorio do arquivo resultante existe
+        ArquivoUtils.criaDiretorio("src\\Arquivos\\Comparacao");
+        
+        // define nomes dos arquivos resultantes
+        String arquivoAmbos = "src\\Arquivos\\Comparacao\\Referencias" + arq1.getName().substring(0, arq1.getName().length()-4) + 
+                "-" + arq2.getName().substring(0, arq2.getName().length()-4) + ".bib";
+        String arquivoSoUm = "src\\Arquivos\\Comparacao\\Referencias" + arq1.getName().substring(0, arq1.getName().length()-4) + ".bib";
+        String arquivoSoDois = "src\\Arquivos\\Comparacao\\Referencias" + arq2.getName().substring(0, arq2.getName().length()-4) + ".bib";
                 
-        // pega as informações dos arquivos lidos
+        // pega as informacoes que seram comparadas
         ArrayList<Elemento> lista1 = ParserUtils.lerDados(arq1);
         ArrayList<Elemento> lista2 = ParserUtils.lerDados(arq2);
         
-        HashMap<String, String> hm = new HashMap<>();
-        
+        // cria listas pra armazenar os registros que tem nos 2
+        ArrayList<Elemento> listaAmbos = new ArrayList<>();
+        ArrayList<Elemento> listaSoUm = new ArrayList<>();
+        ArrayList<Elemento> listaSoDois = new ArrayList<>();
+
         // compara se tem uma bibkey do arquivo 1 no 2. Se encontrar, NÃO é pra escrever no arquivo final
         boolean flag = false;
         
@@ -72,21 +84,13 @@ public class OperacaoUtils
             for (Elemento j : lista2) {
                 if (Objects.equals(e.getBibkey(), j.getBibkey())) { // a comparação certa de duas strings
                     flag = true; // encontrou um bibkey da lista 1 na lista 2
+                    listaAmbos.add(e);
                 }
             }
             // escreve o que tiver de diferente no arquivo
             if (!flag) {
-                pw.println("@" + e.getReferencia() + "{" + 
-                        e.getBibkey());
-                hm = e.getValores();
-                
-                for (Map.Entry<String, String> entry : hm.entrySet()) {
-                    String key = entry.getKey();
-                    key = String.format("%1$-16s", key);
-                    String value = entry.getValue();
-                    pw.println("  " + key + "=  {" + value + "},");
-                }
-                pw.println("}\n");
+                // se a flag valer falso, quer dizer que o elemento esta na lista 1 e nao na 2
+                listaSoUm.add(e);
             }
             flag = false; // reseta a flag pra conseguir comparar de novo
         }
@@ -100,29 +104,21 @@ public class OperacaoUtils
             }
             // escreve o que tiver de diferente no arquivo
             if (!flag) {
-                pw.println("@" + e.getReferencia() + "{" + 
-                        e.getBibkey());
-                hm = e.getValores();
-                
-                for (Map.Entry<String, String> entry : hm.entrySet()) {
-                    String key = entry.getKey();
-                    key = String.format("%1$-16s", key);
-                    String value = entry.getValue();
-                    pw.println("  " + key + "=  {" + value + "},");
-                }
-                pw.println("}\n");
+                // se a flag valer falso, quer dizer que o elemento esta na lista 2 e nao na 1
+                listaSoDois.add(e);
             }
             flag = false; // reseta a flag pra conseguir comparar de novo
         }
-        
-        // fecha a conexão com o arquivo
-        fw.close();
+
+        // escreve dados nos arquivos de resultados
+        ArquivoUtils.escreveArquivo(arquivoAmbos, listaAmbos);
+        ArquivoUtils.escreveArquivo(arquivoSoUm, listaSoUm);
+        ArquivoUtils.escreveArquivo(arquivoSoDois, listaSoDois);
     }
     
-    static public void ordenar(File arq) throws IOException {
-        String nomeNovoArq = "src\\Arquivos\\Ordenacao\\arqResultante.txt";
-        // garante que o diretorio do arquivo resultante existe
-        ArquivoUtils.criaDiretorio("src\\Arquivos\\Ordenacao");
+    static public String ordenar(File arq) throws IOException {
+       
+        String nomeNovoArq = "src\\tmp\\" + arq.getName() + "-ordenado.bib";
                 
         // pega as informações do arquivo lido
         ArrayList<Elemento> lista = ParserUtils.lerDados(arq);
@@ -133,5 +129,6 @@ public class OperacaoUtils
         // salva lista no arquivo
         ArquivoUtils.escreveArquivo(nomeNovoArq, lista);
         
+        return nomeNovoArq;
     }
 }

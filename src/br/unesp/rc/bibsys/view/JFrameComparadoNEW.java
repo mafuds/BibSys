@@ -5,34 +5,28 @@
  */
 package br.unesp.rc.bibsys.view;
 
-import br.unesp.rc.bibsys.utils.OperacaoUtils;
+import br.unesp.rc.bibsys.utils.ArquivoUtils;
 import java.awt.Image;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author tuifm
  */
-public class JFrameVersao extends javax.swing.JFrame
+public class JFrameComparadoNEW extends javax.swing.JFrame
 {
 //    File arqConvertido;
     
     /**
      * Creates new form JFrameConvertido
      */
-    public JFrameVersao()
+    public JFrameComparadoNEW()
     {
         initComponents();
     }
@@ -41,11 +35,18 @@ public class JFrameVersao extends javax.swing.JFrame
      * Creates new form JFrameConvertido
      * @param arqConvertido
      */
-    public JFrameVersao(File arqConvertido)
+    public JFrameComparadoNEW(String arqConvertido)
     {
         initComponents();
+        File arq = new File(arqConvertido);
+        loadTxtEndereco(arq);
     }
     
+    private void loadTxtEndereco(File arq) {
+        String conteudo = ArquivoUtils.lerArquivo(arq);
+//        System.out.println(conteudo);
+        txtArquivo.setText(conteudo);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,10 +61,9 @@ public class JFrameVersao extends javax.swing.JFrame
         lbTitulo = new javax.swing.JLabel();
         lbImagem = new javax.swing.JLabel();
         pnConteudo = new javax.swing.JPanel();
-        lbVersao = new javax.swing.JLabel();
-        lbAno = new javax.swing.JLabel();
-        lbUnesp = new javax.swing.JLabel();
+        btnSalvar = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
+        txtArquivo = new java.awt.TextArea();
         barraMenu = new javax.swing.JMenuBar();
         menuAcoes = new javax.swing.JMenu();
         menuItemConverter = new javax.swing.JMenuItem();
@@ -80,8 +80,7 @@ public class JFrameVersao extends javax.swing.JFrame
         setTitle("BibSys");
 
         lbTitulo.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTitulo.setText("Versão");
+        lbTitulo.setText("Arquivo comparado");
 
         lbImagem.setBounds(10, 11, 414, 86);
         URL path = getClass().getResource("/Imagem/tartaruga.png");
@@ -101,7 +100,7 @@ public class JFrameVersao extends javax.swing.JFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnTituloLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(102, 102, 102)
                 .addComponent(lbImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -111,48 +110,17 @@ public class JFrameVersao extends javax.swing.JFrame
                 .addComponent(lbImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 11, Short.MAX_VALUE))
             .addGroup(pnTituloLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(25, 25, 25)
                 .addComponent(lbTitulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        lbVersao.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbVersao.setText("1.0");
-
-        lbAno.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbAno.setText("UNESP - Rio Claro");
-
-        lbUnesp.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbUnesp.setText("Junho - 2017");
-
-        javax.swing.GroupLayout pnConteudoLayout = new javax.swing.GroupLayout(pnConteudo);
-        pnConteudo.setLayout(pnConteudoLayout);
-        pnConteudoLayout.setHorizontalGroup(
-            pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnConteudoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
-                        .addComponent(lbVersao)
-                        .addGap(126, 126, 126))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
-                        .addComponent(lbUnesp)
-                        .addGap(82, 82, 82))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
-                .addComponent(lbAno)
-                .addGap(64, 64, 64))
-        );
-        pnConteudoLayout.setVerticalGroup(
-            pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
-                .addComponent(lbVersao)
-                .addGap(18, 18, 18)
-                .addComponent(lbUnesp)
-                .addGap(18, 18, 18)
-                .addComponent(lbAno)
-                .addContainerGap(42, Short.MAX_VALUE))
-        );
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         btnMenu.setText("Menu Principal");
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -161,22 +129,45 @@ public class JFrameVersao extends javax.swing.JFrame
             }
         });
 
+        txtArquivo.setEditable(false);
+
+        javax.swing.GroupLayout pnConteudoLayout = new javax.swing.GroupLayout(pnConteudo);
+        pnConteudo.setLayout(pnConteudoLayout);
+        pnConteudoLayout.setHorizontalGroup(
+            pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(btnMenu)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 340, Short.MAX_VALUE)
+                .addComponent(btnSalvar)
+                .addGap(35, 35, 35))
+            .addGroup(pnConteudoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pnConteudoLayout.setVerticalGroup(
+            pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnConteudoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnMenu))
+                .addGap(19, 19, 19))
+        );
+
         javax.swing.GroupLayout pnJanelaLayout = new javax.swing.GroupLayout(pnJanela);
         pnJanela.setLayout(pnJanelaLayout);
         pnJanelaLayout.setHorizontalGroup(
             pnJanelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnJanelaLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnJanelaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnJanelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnJanelaLayout.createSequentialGroup()
-                        .addComponent(pnConteudo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(pnTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnConteudo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnJanelaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnMenu)
-                .addGap(100, 100, 100))
         );
         pnJanelaLayout.setVerticalGroup(
             pnJanelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,10 +175,8 @@ public class JFrameVersao extends javax.swing.JFrame
                 .addContainerGap()
                 .addComponent(pnTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnConteudo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnMenu)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addComponent(pnConteudo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         menuAcoes.setText("Ações");
@@ -270,12 +259,33 @@ public class JFrameVersao extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnJanela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 15, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+
+        String nomeSalvarArq = "src\\Arquivos\\arquivoConcatenado.bib";
+        String mensagem = "Ocorreu um erro ao salvar o arquivo. ";
+        try {
+            PrintWriter novoArq = new PrintWriter(nomeSalvarArq, "UTF-8");
+            novoArq.print(txtArquivo.getText());
+            novoArq.close();
+            mensagem = "Arquivo salvo com sucesso! Voce podera acha-lo em src/Arquivos.";
+        } catch (IOException ex) {
+            System.out.println("Erro ao criar o arquivo. Mensagem: " + ex.getMessage());
+            mensagem = mensagem + ex.getMessage();
+        }
+        
+        JOptionPane.showMessageDialog(this,
+                mensagem,
+                "Salvar arquivo",
+                JOptionPane.INFORMATION_MESSAGE);
+
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void menuItemConverterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConverterActionPerformed
         JFrame jfConverter = new JFrameConverter();
@@ -356,17 +366,25 @@ public class JFrameVersao extends javax.swing.JFrame
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(JFrameVersao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameComparadoNEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(JFrameVersao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameComparadoNEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(JFrameVersao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameComparadoNEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(JFrameVersao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameComparadoNEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -381,8 +399,7 @@ public class JFrameVersao extends javax.swing.JFrame
         {
             public void run()
             {
-                System.out.println("oioi");
-                new JFrameVersao().setVisible(true);
+                new JFrameComparadoNEW().setVisible(true);
             }
         });
     }
@@ -390,11 +407,9 @@ public class JFrameVersao extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton btnMenu;
-    private javax.swing.JLabel lbAno;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel lbImagem;
     private javax.swing.JLabel lbTitulo;
-    private javax.swing.JLabel lbUnesp;
-    private javax.swing.JLabel lbVersao;
     private javax.swing.JMenu menuAcoes;
     private javax.swing.JMenu menuAjuda;
     private javax.swing.JMenuItem menuItemAutores;
@@ -408,5 +423,6 @@ public class JFrameVersao extends javax.swing.JFrame
     private javax.swing.JPanel pnConteudo;
     private javax.swing.JPanel pnJanela;
     private javax.swing.JPanel pnTitulo;
+    private java.awt.TextArea txtArquivo;
     // End of variables declaration//GEN-END:variables
 }

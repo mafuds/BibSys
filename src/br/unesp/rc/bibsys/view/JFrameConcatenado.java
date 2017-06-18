@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class JFrameConcatenado extends javax.swing.JFrame
 {
-//    File arqConvertido;
+    String nomeArqConvertido;
     
     /**
      * Creates new form JFrameConvertido
@@ -39,6 +39,7 @@ public class JFrameConcatenado extends javax.swing.JFrame
     {
         initComponents();
         File arq = new File(arqConvertido);
+        nomeArqConvertido = arq.getName();
         loadTxtEndereco(arq);
     }
     
@@ -267,14 +268,16 @@ public class JFrameConcatenado extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-
-        String nomeSalvarArq = "src\\Arquivos\\arquivoConcatenado.bib";
+        // garante que o diretorio do arquivo resultante existe
+        ArquivoUtils.criaDiretorio("src\\Arquivos\\Concatenacao");
+        
+        String nomeSalvarArq = "src\\Arquivos\\Concatenacao\\" + nomeArqConvertido;
         String mensagem = "Ocorreu um erro ao salvar o arquivo. ";
         try {
             PrintWriter novoArq = new PrintWriter(nomeSalvarArq, "UTF-8");
             novoArq.print(txtArquivo.getText());
             novoArq.close();
-            mensagem = "Arquivo salvo com sucesso! Voce podera acha-lo em src/Arquivos.";
+            mensagem = "Arquivo salvo com sucesso! Voce podera acha-lo em src/Arquivos/Concatenacao.";
         } catch (IOException ex) {
             System.out.println("Erro ao criar o arquivo. Mensagem: " + ex.getMessage());
             mensagem = mensagem + ex.getMessage();

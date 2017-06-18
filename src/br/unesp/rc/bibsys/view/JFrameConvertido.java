@@ -6,14 +6,12 @@
 package br.unesp.rc.bibsys.view;
 
 import br.unesp.rc.bibsys.utils.ArquivoUtils;
-import br.unesp.rc.bibsys.utils.OperacaoUtils;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -23,7 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class JFrameConvertido extends javax.swing.JFrame
 {
-//    File arqConvertido;
+    String nomeArqConvertido;
     
     /**
      * Creates new form JFrameConvertido
@@ -41,6 +39,7 @@ public class JFrameConvertido extends javax.swing.JFrame
     {
         initComponents();
         File arq = new File(arqConvertido);
+        nomeArqConvertido = arq.getName();
         loadTxtEndereco(arq);
     }
     
@@ -82,7 +81,7 @@ public class JFrameConvertido extends javax.swing.JFrame
         setTitle("BibSys");
 
         lbTitulo.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        lbTitulo.setText("Arquivo convertido");
+        lbTitulo.setText("Arquivo formatado");
 
         lbImagem.setBounds(10, 11, 414, 86);
         URL path = getClass().getResource("/Imagem/tartaruga.png");
@@ -269,14 +268,17 @@ public class JFrameConvertido extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // garante que o diretorio do arquivo resultante existe
+        ArquivoUtils.criaDiretorio("src\\Arquivos\\Formatacao");
 
-        String nomeSalvarArq = "src\\Arquivos\\arquivoConvertido.bib";
+        String nomeSalvarArq = "src\\Arquivos\\Formatacao\\" + nomeArqConvertido;
+        System.out.println(nomeSalvarArq);
         String mensagem = "Ocorreu um erro ao salvar o arquivo. ";
         try {
             PrintWriter novoArq = new PrintWriter(nomeSalvarArq, "UTF-8");
             novoArq.print(txtArquivo.getText());
             novoArq.close();
-            mensagem = "Arquivo salvo com sucesso! Voce podera acha-lo em src/Arquivos.";
+            mensagem = "Arquivo salvo com sucesso! Voce podera acha-lo em src/Arquivos/Formatacao.";
         } catch (IOException ex) {
             System.out.println("Erro ao criar o arquivo. Mensagem: " + ex.getMessage());
             mensagem = mensagem + ex.getMessage();
