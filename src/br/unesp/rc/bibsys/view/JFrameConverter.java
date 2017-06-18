@@ -51,13 +51,14 @@ public class JFrameConverter extends javax.swing.JFrame
         ButtonGroup buttonGroup = new ButtonGroup();
         rbEnderecoArq = new javax.swing.JRadioButton();
         rbTextoArq = new javax.swing.JRadioButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        spTexto = new javax.swing.JScrollPane();
         txtTextoBib = new javax.swing.JTextArea();
         barraMenu = new javax.swing.JMenuBar();
         menuAcoes = new javax.swing.JMenu();
         menuItemConverter = new javax.swing.JMenuItem();
         menuItemConcatenar = new javax.swing.JMenuItem();
         menuItemComparar = new javax.swing.JMenuItem();
+        menuItemOrdenar = new javax.swing.JMenuItem();
         menuSobre = new javax.swing.JMenu();
         menuItemVersao = new javax.swing.JMenuItem();
         menuItemAutores = new javax.swing.JMenuItem();
@@ -146,7 +147,7 @@ public class JFrameConverter extends javax.swing.JFrame
         txtTextoBib.setColumns(20);
         txtTextoBib.setRows(5);
         txtTextoBib.setEnabled(false);
-        jScrollPane1.setViewportView(txtTextoBib);
+        spTexto.setViewportView(txtTextoBib);
 
         javax.swing.GroupLayout pnConteudoLayout = new javax.swing.GroupLayout(pnConteudo);
         pnConteudo.setLayout(pnConteudoLayout);
@@ -163,7 +164,7 @@ public class JFrameConverter extends javax.swing.JFrame
                 .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnConteudoLayout.createSequentialGroup()
                         .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(spTexto, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEnderecoArq, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesquisar))
@@ -186,7 +187,7 @@ public class JFrameConverter extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(rbTextoArq)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(spTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConverter)
@@ -240,6 +241,14 @@ public class JFrameConverter extends javax.swing.JFrame
             }
         });
         menuAcoes.add(menuItemComparar);
+
+        menuItemOrdenar.setText("Ordenar");
+        menuItemOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemOrdenarActionPerformed(evt);
+            }
+        });
+        menuAcoes.add(menuItemOrdenar);
 
         barraMenu.add(menuAcoes);
 
@@ -438,6 +447,14 @@ public class JFrameConverter extends javax.swing.JFrame
         dispose();
     }//GEN-LAST:event_btnMenuActionPerformed
 
+    private void menuItemOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemOrdenarActionPerformed
+        // TODO add your handling code here:
+        JFrame jfOrdenar = new JFrameOrdenar();
+        jfOrdenar.pack();
+        jfOrdenar.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_menuItemOrdenarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -489,7 +506,6 @@ public class JFrameConverter extends javax.swing.JFrame
     private javax.swing.JButton btnConverter;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnPesquisar;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbImagem;
     private javax.swing.JLabel lbTitulo;
     private javax.swing.JMenu menuAcoes;
@@ -500,6 +516,7 @@ public class JFrameConverter extends javax.swing.JFrame
     private javax.swing.JMenuItem menuItemConverter;
     private javax.swing.JMenuItem menuItemFaleConosco;
     private javax.swing.JMenuItem menuItemInstrucoes;
+    private javax.swing.JMenuItem menuItemOrdenar;
     private javax.swing.JMenuItem menuItemVersao;
     private javax.swing.JMenu menuSobre;
     private javax.swing.JPanel pnConteudo;
@@ -507,6 +524,7 @@ public class JFrameConverter extends javax.swing.JFrame
     private javax.swing.JPanel pnTitulo;
     private javax.swing.JRadioButton rbEnderecoArq;
     private javax.swing.JRadioButton rbTextoArq;
+    private javax.swing.JScrollPane spTexto;
     private javax.swing.JTextField txtEnderecoArq;
     private javax.swing.JTextArea txtTextoBib;
     // End of variables declaration//GEN-END:variables

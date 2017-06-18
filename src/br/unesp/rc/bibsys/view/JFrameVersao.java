@@ -69,6 +69,7 @@ public class JFrameVersao extends javax.swing.JFrame
         menuItemConverter = new javax.swing.JMenuItem();
         menuItemConcatenar = new javax.swing.JMenuItem();
         menuItemComparar = new javax.swing.JMenuItem();
+        menuItemOrdenar = new javax.swing.JMenuItem();
         menuSobre = new javax.swing.JMenu();
         menuItemVersao = new javax.swing.JMenuItem();
         menuItemAutores = new javax.swing.JMenuItem();
@@ -216,6 +217,14 @@ public class JFrameVersao extends javax.swing.JFrame
         });
         menuAcoes.add(menuItemComparar);
 
+        menuItemOrdenar.setText("Ordenar");
+        menuItemOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemOrdenarActionPerformed(evt);
+            }
+        });
+        menuAcoes.add(menuItemOrdenar);
+
         barraMenu.add(menuAcoes);
 
         menuSobre.setText("Sobre");
@@ -334,6 +343,14 @@ public class JFrameVersao extends javax.swing.JFrame
         dispose();
     }//GEN-LAST:event_btnMenuActionPerformed
 
+    private void menuItemOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemOrdenarActionPerformed
+        // TODO add your handling code here:
+        JFrame jfOrdenar = new JFrameOrdenar();
+        jfOrdenar.pack();
+        jfOrdenar.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_menuItemOrdenarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -403,6 +420,7 @@ public class JFrameVersao extends javax.swing.JFrame
     private javax.swing.JMenuItem menuItemConverter;
     private javax.swing.JMenuItem menuItemFaleConosco;
     private javax.swing.JMenuItem menuItemInstrucoes;
+    private javax.swing.JMenuItem menuItemOrdenar;
     private javax.swing.JMenuItem menuItemVersao;
     private javax.swing.JMenu menuSobre;
     private javax.swing.JPanel pnConteudo;
