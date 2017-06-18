@@ -8,7 +8,10 @@ package br.unesp.rc.bibsys.view;
 import br.unesp.rc.bibsys.utils.OperacaoUtils;
 import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -287,11 +290,18 @@ public class JFrameComparar extends javax.swing.JFrame
 
     private void btnCompararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompararActionPerformed
 
-        String nomeArq;
+        //String nomeArq;
         File arq1 = new File(txtEnderecoArq1.getText());
         File arq2 = new File(txtEnderecoArq2.getText());
         
-//        nomeArq = OperacaoUtils.comparar(arq1, arq2);
+        OperacaoUtils ou = new OperacaoUtils();
+        try
+        {
+            ou.comparar(arq1, arq2);
+        } catch (IOException ex)
+        {
+            Logger.getLogger(JFrameComparar.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         // passar uma string pro jframe comparado
 
