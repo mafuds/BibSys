@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.unesp.rc.bibsys.utils;
 
 import br.unesp.rc.bibsys.beans.Elemento;
@@ -10,37 +5,12 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
-/**
- *
- * @author tuifm
- */
-public class Conversor
-{
-
-    public Conversor() {
-    }
+public class ParserUtils {
     
-    static public String lerArquivo(File arq) {
-        StringBuilder conteudo = new StringBuilder();
-//        content.append("<html>");
-        try (BufferedReader reader = new BufferedReader(new FileReader(arq))) {
-            String s;
-            while ((s = reader.readLine()) != null) {
-                conteudo.append(s).append(System.getProperty("line.separator"));
-            }
-//        txtEnderecoArq.setText();
-        }   catch (IOException ex) {
-            System.out.println("Ocorreu um erro ao ler o arquivo! " + ex.getMessage());
-        }
-        return conteudo.toString();
-    }
-    
-    static private String trataAutor(String autor) {
+    static public String trataAutor(String autor) {
         String autorFormatado = "";
         String [] array1;
         String [] array2;
@@ -78,7 +48,7 @@ public class Conversor
         return autorFormatado;
     }
     
-    static private ArrayList<Elemento> lerDados(File arquivo) {
+    static public ArrayList<Elemento> lerDados(File arquivo) {
         ArrayList<Elemento> lista = new ArrayList<>();
         String linha, ref = "", nomeTag = "", valorTag = "";
         int i, max;
@@ -110,10 +80,9 @@ public class Conversor
                     // leio a proxima linha
                     linha = reader.readLine();
                     // se a linha nao for final de arquivo e nem estiver vazia, trato ela
-    //                System.out.println("antes do while");
                     while (linha != null && !linha.matches("[}]\\s*") && linha.length() > 0 &&
                             (!linha.isEmpty() || !linha.matches("\\s"))) {
-//                        System.out.println("linha: " + linha);
+                        
                         i = 0;
                         c = linha.charAt(i);
                         max = linha.length();
@@ -182,7 +151,7 @@ public class Conversor
                             }
                         }
                             
-    //                    System.out.println("valor: " + valorTag);
+//                        System.out.println("valor: " + valorTag);
 
                         // se tiver achado nome e valor de tag, salva no hashmap
                         if (!nomeTag.equals("") && !valorTag.equals("")) {
@@ -194,7 +163,7 @@ public class Conversor
                         if (nomeTag.equals("author")) {
                             // trato o nome do autor
 //                            Conversor.trataAutor(valorTag);
-                            e.setAutor(Conversor.trataAutor(valorTag));
+                            e.setAutor(ParserUtils.trataAutor(valorTag));
 //                            e.setAutor(valorTag);
                         }
                         if (nomeTag.equals("year")) {
@@ -209,8 +178,7 @@ public class Conversor
                     e.setBibkey(e.getAutor() + ":" + e.getAno());
                     lista.add(e);
                 }
-//                System.out.println("linha: " + linha);
-//                System.out.println("saiu do while");
+                
                 linha = reader.readLine();
             }
         } catch (IOException ex) {
@@ -218,36 +186,6 @@ public class Conversor
         }
            
         return lista;
-    }
-    
-    static public String converte(File arquivo) {
-        ArrayList<Elemento> lista = new ArrayList<>();
-        HashMap<String, String> hm = new HashMap<>();
-        lista = Conversor.lerDados(arquivo);
-        String nomeNovoArq = "src\\tmp\\arquivoTmpConvertido.bib";
-        
-        try {
-            PrintWriter novoArq = new PrintWriter(nomeNovoArq, "UTF-8");
-            
-            for (Elemento elemento : lista) {
-                novoArq.println("@" + elemento.getReferencia() + "{" + 
-                        elemento.getBibkey());
-                hm = elemento.getValores();
-                for (Map.Entry<String, String> entry : hm.entrySet()) {
-                    String key = entry.getKey();
-                    key = String.format("%1$-16s", key);
-                    String value = entry.getValue();
-                    novoArq.println("  " + key + "=  {" + value + "},");
-                }
-                novoArq.println("}\n");
-            }
-            
-            novoArq.close();
-        } catch (IOException e) {
-            System.out.println("Erro ao criar o arquivo. Mensagem: " + e.getMessage());
-        } 
-        
-        return nomeNovoArq;
     }
     
 }

@@ -6,11 +6,9 @@
             <file>file:/C:/Users/Mariana/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/view/SplashForm.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/utils/Conversor.java</file>
-            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/view/SplashForm.java</file>
-            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/main/BibSys.java</file>
-            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/view/JFrameConverter.java</file>
-            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/beans/Elemento.java</file>
+            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/view/JFrameComparado.java</file>
+            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/utils/ArquivoUtils.java</file>
+            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/utils/OperacaoUtils.java</file>
         </group>
     </open-files>
 </project-private>

@@ -1,54 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.unesp.rc.bibsys.view;
 
 import br.unesp.rc.bibsys.utils.ArquivoUtils;
-import br.unesp.rc.bibsys.utils.OperacaoUtils;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author tuifm
- */
-public class JFrameConvertido extends javax.swing.JFrame
+
+public class JFrameComparado extends javax.swing.JFrame
 {
-//    File arqConvertido;
     
     /**
      * Creates new form JFrameConvertido
      */
-    public JFrameConvertido()
+    public JFrameComparado()
     {
         initComponents();
     }
     
-    /**
-     * Creates new form JFrameConvertido
-     * @param arqConvertido
-     */
-    public JFrameConvertido(String arqConvertido)
-    {
-        initComponents();
-        File arq = new File(arqConvertido);
-        loadTxtEndereco(arq);
-    }
-    
-    private void loadTxtEndereco(File arq) {
-        String conteudo = ArquivoUtils.lerArquivo(arq);
-        System.out.println(conteudo);
-        txtArquivo.setText(conteudo);
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,7 +40,7 @@ public class JFrameConvertido extends javax.swing.JFrame
         pnConteudo = new javax.swing.JPanel();
         btnSalvar = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
-        txtArquivo = new java.awt.TextArea();
+        jLabel1 = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         menuAcoes = new javax.swing.JMenu();
         menuItemConverter = new javax.swing.JMenuItem();
@@ -82,7 +57,7 @@ public class JFrameConvertido extends javax.swing.JFrame
         setTitle("BibSys");
 
         lbTitulo.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        lbTitulo.setText("Arquivo convertido");
+        lbTitulo.setText("Arquivo Comparado");
 
         lbImagem.setBounds(10, 11, 414, 86);
         URL path = getClass().getResource("/Imagem/tartaruga.png");
@@ -100,7 +75,7 @@ public class JFrameConvertido extends javax.swing.JFrame
         pnTituloLayout.setHorizontalGroup(
             pnTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnTituloLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(197, Short.MAX_VALUE)
                 .addComponent(lbTitulo)
                 .addGap(102, 102, 102)
                 .addComponent(lbImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -117,7 +92,7 @@ public class JFrameConvertido extends javax.swing.JFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnSalvar.setText("Salvar");
+        btnSalvar.setText("Abrir resultados");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
@@ -131,32 +106,37 @@ public class JFrameConvertido extends javax.swing.JFrame
             }
         });
 
-        txtArquivo.setEditable(false);
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("<html>O arquivo foi comparado com sucesso. O resultado foi salvo em \"src/Arquivos/Comparacao\"</html>");
 
         javax.swing.GroupLayout pnConteudoLayout = new javax.swing.GroupLayout(pnConteudo);
         pnConteudo.setLayout(pnConteudoLayout);
         pnConteudoLayout.setHorizontalGroup(
             pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(btnMenu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 340, Short.MAX_VALUE)
-                .addComponent(btnSalvar)
-                .addGap(35, 35, 35))
             .addGroup(pnConteudoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnConteudoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(pnConteudoLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(btnMenu)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnSalvar)
+                .addGap(232, 232, 232))
         );
         pnConteudoLayout.setVerticalGroup(
             pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnConteudoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvar)
-                    .addComponent(btnMenu))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(btnSalvar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addComponent(btnMenu)
                 .addGap(19, 19, 19))
         );
 
@@ -269,24 +249,14 @@ public class JFrameConvertido extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-
-        String nomeSalvarArq = "src\\Arquivos\\arquivoConvertido.bib";
-        String mensagem = "Ocorreu um erro ao salvar o arquivo. ";
-        try {
-            PrintWriter novoArq = new PrintWriter(nomeSalvarArq, "UTF-8");
-            novoArq.print(txtArquivo.getText());
-            novoArq.close();
-            mensagem = "Arquivo salvo com sucesso! Voce podera acha-lo em src/Arquivos.";
-        } catch (IOException ex) {
-            System.out.println("Erro ao criar o arquivo. Mensagem: " + ex.getMessage());
-            mensagem = mensagem + ex.getMessage();
-        }
+        ArquivoUtils.criaDiretorio("src\\Arquivos\\Comparacao");
+        String path = "src\\Arquivos\\Comparacao";
         
-        JOptionPane.showMessageDialog(this,
-                mensagem,
-                "Salvar arquivo",
-                JOptionPane.INFORMATION_MESSAGE);
-
+        try {
+            Runtime.getRuntime().exec("explorer.exe /select,"+ path);
+        } catch (IOException ex) {
+            System.out.println("Ocorreu um erro ao abrir o file explorer! " + ex.getMessage());
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void menuItemConverterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConverterActionPerformed
@@ -347,17 +317,29 @@ public class JFrameConvertido extends javax.swing.JFrame
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(JFrameConvertido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameComparado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(JFrameConvertido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameComparado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(JFrameConvertido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameComparado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(JFrameConvertido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameComparado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -368,7 +350,7 @@ public class JFrameConvertido extends javax.swing.JFrame
         {
             public void run()
             {
-                new JFrameConvertido().setVisible(true);
+                new JFrameComparado().setVisible(true);
             }
         });
     }
@@ -377,6 +359,7 @@ public class JFrameConvertido extends javax.swing.JFrame
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbImagem;
     private javax.swing.JLabel lbTitulo;
     private javax.swing.JMenu menuAcoes;
@@ -392,6 +375,5 @@ public class JFrameConvertido extends javax.swing.JFrame
     private javax.swing.JPanel pnConteudo;
     private javax.swing.JPanel pnJanela;
     private javax.swing.JPanel pnTitulo;
-    private java.awt.TextArea txtArquivo;
     // End of variables declaration//GEN-END:variables
 }

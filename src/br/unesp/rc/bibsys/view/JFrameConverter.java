@@ -5,7 +5,7 @@
  */
 package br.unesp.rc.bibsys.view;
 
-import br.unesp.rc.bibsys.utils.Conversor;
+import br.unesp.rc.bibsys.utils.OperacaoUtils;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -317,7 +317,7 @@ public class JFrameConverter extends javax.swing.JFrame
             
             // pega arquivo criado e o formata
             File arq1 = new File(caminhoArq);
-            String arqConvertido = Conversor.converte(arq1);
+            String arqConvertido = OperacaoUtils.converte(arq1);
             
             // abrir o JFrame de arquivo convertido
             JFrame jfConvertido = new JFrameConvertido(arqConvertido);
@@ -330,7 +330,7 @@ public class JFrameConverter extends javax.swing.JFrame
         if (rbEnderecoArq.isSelected()) {
             String nomeArq1;
             File arq1 = new File(txtEnderecoArq.getText());
-            nomeArq1 = Conversor.converte(arq1);
+            nomeArq1 = OperacaoUtils.converte(arq1);
             
             // abrir o JFrame de arquivo convertido
             JFrame jfConvertido = new JFrameConvertido(nomeArq1);
@@ -404,9 +404,6 @@ public class JFrameConverter extends javax.swing.JFrame
         JFileChooser chooser = new JFileChooser("src\\Arquivos");
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File arq1 = chooser.getSelectedFile();
-//            System.out.println("abriu o " + file.getName());
-//            //txtEnderecoArq
-            
             txtEnderecoArq.setText(arq1.getPath());
         }
 
