@@ -57,15 +57,13 @@ public class OperacaoUtils
         return nomeNovoArq;
     }
     
-    static public void comparar(File arq1, File arq2) throws IOException {
-        // garante que o diretorio do arquivo resultante existe
-        ArquivoUtils.criaDiretorio("src\\Arquivos\\Comparacao");
-        
+    static public String comparar(File arq1, File arq2) throws IOException {
+       
         // define nomes dos arquivos resultantes
-        String arquivoAmbos = "src\\Arquivos\\Comparacao\\Referencias" + arq1.getName().substring(0, arq1.getName().length()-4) + 
+        String arquivoAmbos = "src\\tmp\\Referencias-" + arq1.getName().substring(0, arq1.getName().length()-4) + 
                 "-" + arq2.getName().substring(0, arq2.getName().length()-4) + ".bib";
-        String arquivoSoUm = "src\\Arquivos\\Comparacao\\Referencias" + arq1.getName().substring(0, arq1.getName().length()-4) + ".bib";
-        String arquivoSoDois = "src\\Arquivos\\Comparacao\\Referencias" + arq2.getName().substring(0, arq2.getName().length()-4) + ".bib";
+        String arquivoSoUm = "src\\tmp\\Referencias-" + arq1.getName().substring(0, arq1.getName().length()-4) + ".bib";
+        String arquivoSoDois = "src\\tmp\\Referencias-" + arq2.getName().substring(0, arq2.getName().length()-4) + ".bib";
                 
         // pega as informacoes que seram comparadas
         ArrayList<Elemento> lista1 = ParserUtils.lerDados(arq1);
@@ -114,6 +112,8 @@ public class OperacaoUtils
         ArquivoUtils.escreveArquivo(arquivoAmbos, listaAmbos);
         ArquivoUtils.escreveArquivo(arquivoSoUm, listaSoUm);
         ArquivoUtils.escreveArquivo(arquivoSoDois, listaSoDois);
+        
+        return arquivoAmbos + "," + arquivoSoUm + "," + arquivoSoDois;
     }
     
     static public String ordenar(File arq) throws IOException {

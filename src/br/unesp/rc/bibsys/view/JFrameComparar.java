@@ -289,24 +289,25 @@ public class JFrameComparar extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCompararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompararActionPerformed
-
-        //String nomeArq;
+        String resultado = "";
+        
         File arq1 = new File(txtEnderecoArq1.getText());
         File arq2 = new File(txtEnderecoArq2.getText());
         
-        OperacaoUtils ou = new OperacaoUtils();
         try
         {
-            ou.comparar(arq1, arq2);
+            resultado = OperacaoUtils.comparar(arq1, arq2);
         } catch (IOException ex)
         {
-            Logger.getLogger(JFrameComparar.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Erro: " + ex);
         }
 
-        // passar uma string pro jframe comparado
-
+        System.out.println("resultado: " + resultado);
+        System.out.println(resultado.split(",").length);
         // abrir o JFrame de arquivo convertido
-        JFrame jfComparado = new JFrameComparado();
+        JFrame jfComparado = new JFrameComparado(resultado.split(",")[0],
+                                                    resultado.split(",")[1],
+                                                    resultado.split(",")[2]);
         jfComparado.pack();
         jfComparado.setVisible(true);
         dispose();
