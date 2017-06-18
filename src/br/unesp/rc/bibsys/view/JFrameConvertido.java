@@ -12,7 +12,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -268,14 +270,21 @@ public class JFrameConvertido extends javax.swing.JFrame
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
         String nomeSalvarArq = "src\\Arquivos\\arquivoConvertido.bib";
-
+        String mensagem = "Ocorreu um erro ao salvar o arquivo. ";
         try {
             PrintWriter novoArq = new PrintWriter(nomeSalvarArq, "UTF-8");
             novoArq.print(txtArquivo.getText());
             novoArq.close();
-        } catch (IOException e) {
-            System.out.println("Erro ao criar o arquivo. Mensagem: " + e.getMessage());
+            mensagem = "Arquivo salvo com sucesso! Voce podera acha-lo em src/Arquivos.";
+        } catch (IOException ex) {
+            System.out.println("Erro ao criar o arquivo. Mensagem: " + ex.getMessage());
+            mensagem = mensagem + ex.getMessage();
         }
+        
+        JOptionPane.showMessageDialog(this,
+                mensagem,
+                "Salvar arquivo",
+                JOptionPane.INFORMATION_MESSAGE);
 
     }//GEN-LAST:event_btnSalvarActionPerformed
 
