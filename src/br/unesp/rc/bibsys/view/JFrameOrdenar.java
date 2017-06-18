@@ -271,9 +271,12 @@ public class JFrameOrdenar extends javax.swing.JFrame
 
     private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
         File arq = new File(txtEnderecoArq1.getText());
-        OperacaoUtils ou = new OperacaoUtils();
         
-        ou.ordenar(arq);
+        try {
+            OperacaoUtils.ordenar(arq);
+        } catch (IOException ex) {
+            System.out.println("Erro ao ler arquivo. " + ex.getMessage());
+        }
         
         JFrame jfOrdenado = new JFrameOrdenado();
         jfOrdenado.pack();

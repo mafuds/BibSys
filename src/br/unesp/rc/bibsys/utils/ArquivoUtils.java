@@ -1,9 +1,14 @@
 package br.unesp.rc.bibsys.utils;
 
+import br.unesp.rc.bibsys.beans.Elemento;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ArquivoUtils {
     
@@ -40,6 +45,36 @@ public class ArquivoUtils {
                 System.out.println("Diretorio criado com sucesso!");  
             }
         }   
+    }
+    
+    
+    static public boolean escreveArquivo(String nomeNovoArq, ArrayList<Elemento> lista) {
+        HashMap<String, String> hm = new HashMap<>();
+        boolean b = false;
+
+        try {
+            PrintWriter novoArq = new PrintWriter(nomeNovoArq, "UTF-8");
+            
+            for (Elemento elemento : lista) {
+                novoArq.println("@" + elemento.getReferencia() + "{" + 
+                        elemento.getBibkey());
+                hm = elemento.getValores();
+                for (Map.Entry<String, String> entry : hm.entrySet()) {
+                    String key = entry.getKey();
+                    key = String.format("%1$-16s", key);
+                    String value = entry.getValue();
+                    novoArq.println("  " + key + "=  {" + value + "},");
+                }
+                novoArq.println("}\n");
+            }
+            
+            novoArq.close();
+            b = true;
+        } catch (IOException e) {
+            System.out.println("Erro ao criar o arquivo. Mensagem: " + e.getMessage());
+        } 
+        
+        return b;
     }
     
 }
