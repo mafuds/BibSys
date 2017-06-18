@@ -269,7 +269,9 @@ public class JFrameConcatenado extends javax.swing.JFrame
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // garante que o diretorio do arquivo resultante existe
-        ArquivoUtils.criaDiretorio("src\\Arquivos\\Concatenacao");
+        String caminho = "src\\Arquivos\\Concatenacao";
+        ArquivoUtils.criaDiretorio(caminho);
+        boolean sucesso = false;
         
         String nomeSalvarArq = "src\\Arquivos\\Concatenacao\\" + nomeArqConvertido;
         String mensagem = "Ocorreu um erro ao salvar o arquivo. ";
@@ -277,17 +279,29 @@ public class JFrameConcatenado extends javax.swing.JFrame
             PrintWriter novoArq = new PrintWriter(nomeSalvarArq, "UTF-8");
             novoArq.print(txtArquivo.getText());
             novoArq.close();
-            mensagem = "Arquivo salvo com sucesso! Voce podera acha-lo em src/Arquivos/Concatenacao.";
+            mensagem = "Arquivo salvo com sucesso! Voce podera acha-lo em src/Arquivos/Concatenacao. \nDeseja abrir esta pasta agora?";
+            sucesso = true;
         } catch (IOException ex) {
             System.out.println("Erro ao criar o arquivo. Mensagem: " + ex.getMessage());
             mensagem = mensagem + ex.getMessage();
         }
         
-        JOptionPane.showMessageDialog(this,
-                mensagem,
-                "Salvar arquivo",
-                JOptionPane.INFORMATION_MESSAGE);
-
+        int input = JOptionPane.showOptionDialog(this,
+                mensagem, 
+                "Salvar arquivo", 
+                JOptionPane.YES_NO_OPTION, 
+                JOptionPane.INFORMATION_MESSAGE, 
+                null, 
+                null, 
+                null);
+        
+        if (input == JOptionPane.YES_OPTION && sucesso) {
+            try {
+                Runtime.getRuntime().exec("explorer.exe /select," + caminho + "\\");
+            } catch (IOException ex) {
+                System.out.println("Erro ao abrir o file explorer: " + ex.getMessage());
+            }
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void menuItemConverterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConverterActionPerformed

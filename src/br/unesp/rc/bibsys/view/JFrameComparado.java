@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -328,7 +330,9 @@ public class JFrameComparado extends javax.swing.JFrame
     
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // garante que o diretorio do arquivo resultante existe
-        ArquivoUtils.criaDiretorio("src\\Arquivos\\Comparacao");
+        String caminho = "src\\Arquivos\\Comparacao";
+        ArquivoUtils.criaDiretorio(caminho);
+        boolean sucesso = false;
         
         String nomeSalvarArqAmbos = "src\\Arquivos\\Comparacao\\" + nomeArqAmbos;
         String nomeSalvarArqArq1 = "src\\Arquivos\\Comparacao\\" + nomeArq1;
@@ -358,16 +362,29 @@ public class JFrameComparado extends javax.swing.JFrame
             novoArq.print(conteudo);
             novoArq.close();
             
-            mensagem = "Arquivo salvo com sucesso! Voce podera acha-lo em src/Arquivos/Comparacao.";
+            mensagem = "Arquivo salvo com sucesso! Voce podera acha-lo em src/Arquivos/Comparacao. \nDeseja abrir esta pasta agora?";
+            sucesso = true;
         } catch (IOException ex) {
             System.out.println("Erro ao criar o arquivo. Mensagem: " + ex.getMessage());
             mensagem = mensagem + ex.getMessage();
         }
         
-        JOptionPane.showMessageDialog(this,
-                mensagem,
-                "Salvar arquivo",
-                JOptionPane.INFORMATION_MESSAGE);
+        int input = JOptionPane.showOptionDialog(this,
+                mensagem, 
+                "Salvar arquivo", 
+                JOptionPane.YES_NO_OPTION, 
+                JOptionPane.INFORMATION_MESSAGE, 
+                null, 
+                null, 
+                null);
+        
+        if (input == JOptionPane.YES_OPTION && sucesso) {
+            try {
+                Runtime.getRuntime().exec("explorer.exe /select," + caminho + "\\");
+            } catch (IOException ex) {
+                System.out.println("Erro ao abrir o file explorer: " + ex.getMessage());
+            }
+        }
 
     }//GEN-LAST:event_btnSalvarActionPerformed
 
