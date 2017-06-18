@@ -113,7 +113,7 @@ public class OperacaoUtils
         ArquivoUtils.criaDiretorio("src\\Arquivos\\Comparacao"); // cria o diretório onde será salvo o arquivo resultante
         File arqResultante = new File("src\\Arquivos\\Comparacao\\arqResultante.txt"); // abre o arquivo resultante
         FileWriter fw = new FileWriter(arqResultante.getAbsoluteFile());
-        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter pw = new PrintWriter(fw);
         
         // ler arquivos que são parâmetro
         String resultadoArq1;
@@ -129,6 +129,8 @@ public class OperacaoUtils
         lista1 = pu.lerDados(arq1);
         lista2 = pu.lerDados(arq2);
         
+        HashMap<String, String> hm = new HashMap<>();
+        
         // compara se tem uma bibkey do arquivo 1 no 2. Se encontrar, NÃO é pra escrever no arquivo final
         boolean flag = false;
         
@@ -141,8 +143,17 @@ public class OperacaoUtils
             }
             // escreve o que tiver de diferente no arquivo
             if (!flag) {
-                bw.write(e.getBibkey());
-                bw.write("\n");
+                pw.println("@" + e.getReferencia() + "{" + 
+                        e.getBibkey());
+                hm = e.getValores();
+                
+                for (Map.Entry<String, String> entry : hm.entrySet()) {
+                    String key = entry.getKey();
+                    key = String.format("%1$-16s", key);
+                    String value = entry.getValue();
+                    pw.println("  " + key + "=  {" + value + "},");
+                }
+                pw.println("}\n");
             }
             flag = false; // reseta a flag pra conseguir comparar de novo
         }
@@ -156,14 +167,23 @@ public class OperacaoUtils
             }
             // escreve o que tiver de diferente no arquivo
             if (!flag) {
-                bw.write(e.getBibkey());
-                bw.write("\n");
+                pw.println("@" + e.getReferencia() + "{" + 
+                        e.getBibkey());
+                hm = e.getValores();
+                
+                for (Map.Entry<String, String> entry : hm.entrySet()) {
+                    String key = entry.getKey();
+                    key = String.format("%1$-16s", key);
+                    String value = entry.getValue();
+                    pw.println("  " + key + "=  {" + value + "},");
+                }
+                pw.println("}\n");
             }
             flag = false; // reseta a flag pra conseguir comparar de novo
         }
         
         // fecha a conexão com o arquivo
-        bw.close();
+        fw.close();
     }
     
     static public void ordenar(File arq) throws IOException {
