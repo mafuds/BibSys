@@ -1,36 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.unesp.rc.bibsys.view;
 
-import br.unesp.rc.bibsys.utils.OperacaoUtils;
+import br.unesp.rc.bibsys.utils.ArquivoUtils;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author tuifm
- */
-public class JFrameOrdenar extends javax.swing.JFrame
+
+public class JFrameOrdenado extends javax.swing.JFrame
 {
-
+    
     /**
-     * Creates new form SplashForm
+     * Creates new form JFrameConvertido
      */
-    public JFrameOrdenar()
+    public JFrameOrdenado()
     {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,18 +31,17 @@ public class JFrameOrdenar extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         pnJanela = new javax.swing.JPanel();
         pnTitulo = new javax.swing.JPanel();
         lbTitulo = new javax.swing.JLabel();
         lbImagem = new javax.swing.JLabel();
         pnConteudo = new javax.swing.JPanel();
-        btnOrdenar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
-        txtEnderecoArq1 = new javax.swing.JTextField();
-        btnPesquisarArq1 = new javax.swing.JButton();
-        lbDescricao = new javax.swing.JLabel();
+        lbTexto = new javax.swing.JLabel();
         barraMenu = new javax.swing.JMenuBar();
         menuAcoes = new javax.swing.JMenu();
         menuItemConverter = new javax.swing.JMenuItem();
@@ -66,7 +58,7 @@ public class JFrameOrdenar extends javax.swing.JFrame
         setTitle("BibSys");
 
         lbTitulo.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        lbTitulo.setText("Ordenar Arquivo");
+        lbTitulo.setText("Arquivo Ordenado");
 
         lbImagem.setBounds(10, 11, 414, 86);
         URL path = getClass().getResource("/Imagem/tartaruga.png");
@@ -84,9 +76,9 @@ public class JFrameOrdenar extends javax.swing.JFrame
         pnTituloLayout.setHorizontalGroup(
             pnTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnTituloLayout.createSequentialGroup()
-                .addContainerGap(219, Short.MAX_VALUE)
+                .addContainerGap(213, Short.MAX_VALUE)
                 .addComponent(lbTitulo)
-                .addGap(114, 114, 114)
+                .addGap(102, 102, 102)
                 .addComponent(lbImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -101,63 +93,55 @@ public class JFrameOrdenar extends javax.swing.JFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnOrdenar.setText("Ordenar");
-        btnOrdenar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOrdenarActionPerformed(evt);
+        btnSalvar.setText("Abrir resultados");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnSalvarActionPerformed(evt);
             }
         });
 
         btnMenu.setText("Menu Principal");
-        btnMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnMenu.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnMenuActionPerformed(evt);
             }
         });
 
-        btnPesquisarArq1.setText("Pesquisar");
-        btnPesquisarArq1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarArq1ActionPerformed(evt);
-            }
-        });
-
-        lbDescricao.setText("Por favor, selecione um arquivo para ser ordenado.");
+        lbTexto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbTexto.setText("<html>O arquivo foi ordenado com sucesso. O resultado foi salvo em \"src/Arquivos/Comparacao\"</html>");
 
         javax.swing.GroupLayout pnConteudoLayout = new javax.swing.GroupLayout(pnConteudo);
         pnConteudo.setLayout(pnConteudoLayout);
         pnConteudoLayout.setHorizontalGroup(
             pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(btnMenu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 324, Short.MAX_VALUE)
-                .addComponent(btnOrdenar)
-                .addGap(35, 35, 35))
             .addGroup(pnConteudoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtEnderecoArq1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPesquisarArq1)
+                .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnConteudoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(pnConteudoLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(btnMenu)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(pnConteudoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbDescricao)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnSalvar)
+                .addGap(232, 232, 232))
         );
         pnConteudoLayout.setVerticalGroup(
             pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnConteudoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbDescricao)
-                .addGap(28, 28, 28)
-                .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEnderecoArq1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisarArq1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
-                .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnOrdenar)
-                    .addComponent(btnMenu))
+                .addComponent(lbTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(btnSalvar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addComponent(btnMenu)
                 .addGap(19, 19, 19))
         );
 
@@ -185,24 +169,30 @@ public class JFrameOrdenar extends javax.swing.JFrame
         menuAcoes.setText("Ações");
 
         menuItemConverter.setText("Converter");
-        menuItemConverter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuItemConverter.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuItemConverterActionPerformed(evt);
             }
         });
         menuAcoes.add(menuItemConverter);
 
         menuItemConcatenar.setText("Concatenar");
-        menuItemConcatenar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuItemConcatenar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuItemConcatenarActionPerformed(evt);
             }
         });
         menuAcoes.add(menuItemConcatenar);
 
         menuItemComparar.setText("Comparar");
-        menuItemComparar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuItemComparar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuItemCompararActionPerformed(evt);
             }
         });
@@ -213,16 +203,20 @@ public class JFrameOrdenar extends javax.swing.JFrame
         menuSobre.setText("Sobre");
 
         menuItemVersao.setText("Versão do sistema");
-        menuItemVersao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuItemVersao.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuItemVersaoActionPerformed(evt);
             }
         });
         menuSobre.add(menuItemVersao);
 
         menuItemAutores.setText("Autores");
-        menuItemAutores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuItemAutores.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuItemAutoresActionPerformed(evt);
             }
         });
@@ -233,16 +227,20 @@ public class JFrameOrdenar extends javax.swing.JFrame
         menuAjuda.setText("Ajuda");
 
         menuItemInstrucoes.setText("Instruções");
-        menuItemInstrucoes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuItemInstrucoes.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuItemInstrucoesActionPerformed(evt);
             }
         });
         menuAjuda.add(menuItemInstrucoes);
 
         menuItemFaleConosco.setText("Fale conosco");
-        menuItemFaleConosco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        menuItemFaleConosco.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 menuItemFaleConoscoActionPerformed(evt);
             }
         });
@@ -262,24 +260,23 @@ public class JFrameOrdenar extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnJanela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addGap(0, 15, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
-        File arq = new File(txtEnderecoArq1.getText());
-        OperacaoUtils ou = new OperacaoUtils();
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        ArquivoUtils.criaDiretorio("src\\Arquivos\\Ordenacao");
+        String path = "src\\Arquivos\\Ordenacao";
         
-        ou.ordenar(arq);
-        
-        JFrame jfOrdenado = new JFrameOrdenado();
-        jfOrdenado.pack();
-        jfOrdenado.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnOrdenarActionPerformed
+        try {
+            Runtime.getRuntime().exec("explorer.exe /select,"+ path);
+        } catch (IOException ex) {
+            System.out.println("Ocorreu um erro ao abrir o file explorer! " + ex.getMessage());
+        }
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void menuItemConverterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConverterActionPerformed
         JFrame jfConverter = new JFrameConverter();
@@ -330,18 +327,6 @@ public class JFrameOrdenar extends javax.swing.JFrame
         dispose();
     }//GEN-LAST:event_menuItemCompararActionPerformed
 
-    private void btnPesquisarArq1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarArq1ActionPerformed
-        JFileChooser chooser = new JFileChooser();
-        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            File file = chooser.getSelectedFile();
-//            System.out.println("abriu o " + file.getName());
-//            //txtEnderecoArq
-            
-            txtEnderecoArq1.setText(file.getPath());
-        }
-
-    }//GEN-LAST:event_btnPesquisarArq1ActionPerformed
-
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         // TODO add your handling code here:
         JFrame jfMenu = new SplashForm();
@@ -372,16 +357,16 @@ public class JFrameOrdenar extends javax.swing.JFrame
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(JFrameOrdenar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameOrdenado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(JFrameOrdenar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameOrdenado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(JFrameOrdenar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameOrdenado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(JFrameOrdenar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameOrdenado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -421,7 +406,7 @@ public class JFrameOrdenar extends javax.swing.JFrame
         {
             public void run()
             {
-                new JFrameOrdenar().setVisible(true);
+                new JFrameOrdenado().setVisible(true);
             }
         });
     }
@@ -429,10 +414,9 @@ public class JFrameOrdenar extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton btnMenu;
-    private javax.swing.JButton btnOrdenar;
-    private javax.swing.JButton btnPesquisarArq1;
-    private javax.swing.JLabel lbDescricao;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel lbImagem;
+    private javax.swing.JLabel lbTexto;
     private javax.swing.JLabel lbTitulo;
     private javax.swing.JMenu menuAcoes;
     private javax.swing.JMenu menuAjuda;
@@ -447,6 +431,5 @@ public class JFrameOrdenar extends javax.swing.JFrame
     private javax.swing.JPanel pnConteudo;
     private javax.swing.JPanel pnJanela;
     private javax.swing.JPanel pnTitulo;
-    private javax.swing.JTextField txtEnderecoArq1;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,6 +12,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
+import static java.util.Comparator.comparing;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -164,7 +166,43 @@ public class OperacaoUtils
         bw.close();
     }
     
-    static public void ordenar(File arq) {
+    static public void ordenar(File arq) throws IOException {
+        ArquivoUtils.criaDiretorio("src\\Arquivos\\Ordenacao"); // cria o diretório onde será salvo o arquivo resultante
+        File arqResultante = new File("src\\Arquivos\\Ordenacao\\arqResultante.txt"); // abre o arquivo resultante
+        FileWriter fw = new FileWriter(arqResultante.getAbsoluteFile());
+        PrintWriter pw = new PrintWriter(fw);
         
+        // lê o arquivo parâmetro
+        String resultadoArq;
+        ArquivoUtils arqUtils = new ArquivoUtils();
+        resultadoArq = arqUtils.lerArquivo(arq);
+        
+        // pega as informações do arquivo lido
+        ParserUtils pu = new ParserUtils();
+        ArrayList<Elemento> lista = new ArrayList<>();
+        lista = pu.lerDados(arq);
+        
+        // Ordena a lista pelo bibkey
+        Collections.sort(lista,comparing(Elemento::getBibkey));
+        
+        // Salva a lista no arquivo
+        HashMap<String, String> hm = new HashMap<>();
+        
+        for (Elemento elemento : lista) {
+                pw.println("@" + elemento.getReferencia() + "{" + 
+                        elemento.getBibkey());
+                hm = elemento.getValores();
+                
+                for (Map.Entry<String, String> entry : hm.entrySet()) {
+                    String key = entry.getKey();
+                    key = String.format("%1$-16s", key);
+                    String value = entry.getValue();
+                    pw.println("  " + key + "=  {" + value + "},");
+                }
+                pw.println("}\n");
+            }
+        
+        // fecha a conexão com o arquivo
+        pw.close();
     }
 }

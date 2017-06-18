@@ -6,15 +6,10 @@
             <file>file:/C:/Users/Mariana/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/view/SplashForm.java</file>
         </group>
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/tuifm/Documents/UNESP/7º%20Semestre/SOO/BibSys/src/br/unesp/rc/bibsys/view/DisplayTrayIcon.java</file>
-            <file>file:/C:/Users/tuifm/Documents/UNESP/7º%20Semestre/SOO/BibSys/src/br/unesp/rc/bibsys/view/JFrameVersao.java</file>
-            <file>file:/C:/Users/tuifm/Documents/UNESP/7º%20Semestre/SOO/BibSys/src/br/unesp/rc/bibsys/view/SplashForm.java</file>
-=======
-            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/view/JFrameComparado.java</file>
-            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/utils/ArquivoUtils.java</file>
-            <file>file:/C:/Users/maria/Documents/UNESP/SOO/BibSys/src/br/unesp/rc/bibsys/utils/OperacaoUtils.java</file>
->>>>>>> d467fec9881f385ae837929f6f300020def4273b
+            <file>file:/C:/Users/tuifm/Documents/UNESP/7º%20Semestre/SOO/BibSys/src/br/unesp/rc/bibsys/utils/OperacaoUtils.java</file>
+            <file>file:/C:/Users/tuifm/Documents/UNESP/7º%20Semestre/SOO/BibSys/src/br/unesp/rc/bibsys/utils/ArquivoUtils.java</file>
+            <file>file:/C:/Users/tuifm/Documents/UNESP/7º%20Semestre/SOO/BibSys/src/br/unesp/rc/bibsys/beans/Elemento.java</file>
+            <file>file:/C:/Users/tuifm/Documents/UNESP/7º%20Semestre/SOO/BibSys/src/br/unesp/rc/bibsys/utils/ParserUtils.java</file>
         </group>
     </open-files>
 </project-private>
