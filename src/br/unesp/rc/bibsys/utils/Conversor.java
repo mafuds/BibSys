@@ -38,7 +38,36 @@ public class Conversor
         return conteudo.toString();
     }
     
-    static public ArrayList<Elemento> lerDados(File arquivo) {
+    static private String trataAutor(String autor) {
+        String autorFormatado = "";
+        String [] array;
+        array = autor.split("and");
+        
+        switch (array.length) {
+            case 0:
+                System.out.println("Erro! Deve haver um autor.");
+                break;
+            case 1:
+                autorFormatado = array[0].split(",")[0].toLowerCase();
+                break;
+            case 2:
+                String str = "";
+                autorFormatado = array[0].split(",")[0].toLowerCase();
+                str = array[1].split(",")[0].toLowerCase();
+                autorFormatado = autorFormatado + "." + str;
+                break;
+            default:
+                if (array.length >= 3) {
+                    autorFormatado = array[0].split(",")[0].toLowerCase();
+                    autorFormatado = autorFormatado + "etal";
+                }
+                break;
+        }
+        
+        return autorFormatado;
+    }
+    
+    static private ArrayList<Elemento> lerDados(File arquivo) {
         ArrayList<Elemento> lista = new ArrayList<>();
         String linha, ref = "", nomeTag = "", valorTag = "";
         int i, max;
@@ -47,7 +76,7 @@ public class Conversor
         try (BufferedReader reader = new BufferedReader(new FileReader(arquivo))) {
             linha = reader.readLine();
             while (linha != null) {
-                System.out.println("-------------------\nnova referencia");
+//                System.out.println("-------------------\nnova referencia");
                 // testo se é inicio de uma nova referencia
                 if (linha.matches("\\s*[@].*")) {
                     // declaro as variaveis que serão necessárias para salvar a referencia
@@ -74,7 +103,7 @@ public class Conversor
     //                System.out.println("antes do while");
                     while (linha != null && !linha.matches("[}]\\s*") && linha.length() > 0 &&
                             (!linha.isEmpty() || !linha.matches("\\s"))) {
-                        System.out.println("linha: " + linha);
+//                        System.out.println("linha: " + linha);
                         i = 0;
                         c = linha.charAt(i);
                         max = linha.length();
@@ -148,12 +177,15 @@ public class Conversor
                         // se tiver achado nome e valor de tag, salva no hashmap
                         if (!nomeTag.equals("") && !valorTag.equals("")) {
                             hm.put(nomeTag, valorTag);
-                            System.out.println("Hashmap <" + nomeTag + ", " + valorTag + ">");
+//                            System.out.println("Hashmap <" + nomeTag + ", " + valorTag + ">");
                         }
                         
                         // verifico se a tag era de ano ou autor
                         if (nomeTag.equals("author")) {
-                            e.setAutor(valorTag);
+                            // trato o nome do autor
+//                            Conversor.trataAutor(valorTag);
+                            e.setAutor(Conversor.trataAutor(valorTag));
+//                            e.setAutor(valorTag);
                         }
                         if (nomeTag.equals("year")) {
                             e.setAno(Integer.parseInt(valorTag));
@@ -180,9 +212,9 @@ public class Conversor
     static public File converte(File arquivo) {
         ArrayList<Elemento> lista = new ArrayList<>();
         lista = Conversor.lerDados(arquivo);
-
+//
         for (Elemento elemento : lista) {
-            System.out.println(elemento.getReferencia());
+//            System.out.println(elemento.getReferencia());
             System.out.println(elemento.getAutor());
             System.out.println(elemento.getAno());
         }

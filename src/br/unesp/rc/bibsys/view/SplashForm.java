@@ -382,8 +382,8 @@ public class SplashForm extends javax.swing.JFrame
         java.awt.EventQueue.invokeLater(new Runnable()
         {
             public void run() {
-//                File file = new File("bib1.bib");
-//                Conversor.converte(file);
+                File file = new File("bib1.bib");
+                Conversor.converte(file);
                 try {
                     // trocar pra 5000 depois  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     Thread.sleep(1000);
