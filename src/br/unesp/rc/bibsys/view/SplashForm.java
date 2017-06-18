@@ -282,7 +282,10 @@ public class SplashForm extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuItemConverterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConverterActionPerformed
-        // TODO add your handling code here:
+        JFrame jfConverter = new JFrameConverter();
+        jfConverter.pack();
+        jfConverter.setVisible(true);
+        dispose();
     }//GEN-LAST:event_menuItemConverterActionPerformed
 
     private void menuItemVersaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemVersaoActionPerformed
@@ -293,28 +296,41 @@ public class SplashForm extends javax.swing.JFrame
     }//GEN-LAST:event_menuItemVersaoActionPerformed
 
     private void menuItemAutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAutoresActionPerformed
-        // TODO add your handling code here:
+        JFrame jfAutores = new JFrameAutores();
+        jfAutores.pack();
+        jfAutores.setVisible(true);
+        dispose();
     }//GEN-LAST:event_menuItemAutoresActionPerformed
 
     private void menuItemInstrucoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInstrucoesActionPerformed
-        // TODO add your handling code here:
+        JFrame jfInstrucoes = new JFrameInstrucoes();
+        jfInstrucoes.pack();
+        jfInstrucoes.setVisible(true);
+        dispose();
     }//GEN-LAST:event_menuItemInstrucoesActionPerformed
 
     private void menuItemFaleConoscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemFaleConoscoActionPerformed
-        // TODO add your handling code here:
+        JFrame jfFaleConosco = new JFrameFaleConosco();
+        jfFaleConosco.pack();
+        jfFaleConosco.setVisible(true);
+        dispose();
     }//GEN-LAST:event_menuItemFaleConoscoActionPerformed
 
     private void menuItemConcatenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConcatenarActionPerformed
-        // TODO add your handling code here:
+        JFrame jfConcatenar = new JFrameConcatenar();
+        jfConcatenar.pack();
+        jfConcatenar.setVisible(true);
+        dispose();
     }//GEN-LAST:event_menuItemConcatenarActionPerformed
 
     private void menuItemCompararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCompararActionPerformed
-        // TODO add your handling code here:
+        JFrame jfComparar = new JFrameComparar();
+        jfComparar.pack();
+        jfComparar.setVisible(true);
+        dispose();
     }//GEN-LAST:event_menuItemCompararActionPerformed
 
     private void btnConverterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConverterActionPerformed
-        // TODO add your handling code here:
-//        new JFrameConverter();
         JFrame jfConverter = new JFrameConverter();
         jfConverter.pack();
         jfConverter.setVisible(true);
@@ -322,7 +338,6 @@ public class SplashForm extends javax.swing.JFrame
     }//GEN-LAST:event_btnConverterActionPerformed
 
     private void btnCompararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompararActionPerformed
-        // TODO add your handling code here:
         JFrame jfComparar = new JFrameComparar();
         jfComparar.pack();
         jfComparar.setVisible(true);
@@ -330,7 +345,6 @@ public class SplashForm extends javax.swing.JFrame
     }//GEN-LAST:event_btnCompararActionPerformed
 
     private void btnConcatenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConcatenarActionPerformed
-        // TODO add your handling code here:
         JFrame jfConcatenar = new JFrameConcatenar();
         jfConcatenar.pack();
         jfConcatenar.setVisible(true);
@@ -338,7 +352,6 @@ public class SplashForm extends javax.swing.JFrame
     }//GEN-LAST:event_btnConcatenarActionPerformed
 
     private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
-        // TODO add your handling code here:
         JFrame jfOrdenar = new JFrameOrdenar();
         jfOrdenar.pack();
         jfOrdenar.setVisible(true);

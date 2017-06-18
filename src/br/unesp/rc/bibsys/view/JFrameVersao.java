@@ -61,8 +61,10 @@ public class JFrameVersao extends javax.swing.JFrame
         lbTitulo = new javax.swing.JLabel();
         lbImagem = new javax.swing.JLabel();
         pnConteudo = new javax.swing.JPanel();
-        btnMenu = new javax.swing.JButton();
         lbVersao = new javax.swing.JLabel();
+        lbAno = new javax.swing.JLabel();
+        lbUnesp = new javax.swing.JLabel();
+        btnMenu = new javax.swing.JButton();
         barraMenu = new javax.swing.JMenuBar();
         menuAcoes = new javax.swing.JMenu();
         menuItemConverter = new javax.swing.JMenuItem();
@@ -100,7 +102,7 @@ public class JFrameVersao extends javax.swing.JFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnTituloLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbTitulo)
-                .addGap(140, 140, 140)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -110,9 +112,47 @@ public class JFrameVersao extends javax.swing.JFrame
                 .addComponent(lbImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 11, Short.MAX_VALUE))
             .addGroup(pnTituloLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(21, 21, 21)
                 .addComponent(lbTitulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        lbVersao.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbVersao.setText("1.0");
+
+        lbAno.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbAno.setText("UNESP - Rio Claro");
+
+        lbUnesp.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbUnesp.setText("Junho - 2017");
+
+        javax.swing.GroupLayout pnConteudoLayout = new javax.swing.GroupLayout(pnConteudo);
+        pnConteudo.setLayout(pnConteudoLayout);
+        pnConteudoLayout.setHorizontalGroup(
+            pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnConteudoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
+                        .addComponent(lbVersao)
+                        .addGap(126, 126, 126))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
+                        .addComponent(lbUnesp)
+                        .addGap(82, 82, 82))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
+                .addContainerGap(79, Short.MAX_VALUE)
+                .addComponent(lbAno)
+                .addGap(64, 64, 64))
+        );
+        pnConteudoLayout.setVerticalGroup(
+            pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
+                .addComponent(lbVersao)
+                .addGap(18, 18, 18)
+                .addComponent(lbUnesp)
+                .addGap(18, 18, 18)
+                .addComponent(lbAno)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         btnMenu.setText("Menu Principal");
@@ -124,42 +164,22 @@ public class JFrameVersao extends javax.swing.JFrame
             }
         });
 
-        lbVersao.setText("1.0");
-
-        javax.swing.GroupLayout pnConteudoLayout = new javax.swing.GroupLayout(pnConteudo);
-        pnConteudo.setLayout(pnConteudoLayout);
-        pnConteudoLayout.setHorizontalGroup(
-            pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnConteudoLayout.createSequentialGroup()
-                .addContainerGap(238, Short.MAX_VALUE)
-                .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
-                        .addComponent(btnMenu)
-                        .addGap(228, 228, 228))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
-                        .addComponent(lbVersao)
-                        .addGap(275, 275, 275))))
-        );
-        pnConteudoLayout.setVerticalGroup(
-            pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbVersao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
-                .addComponent(btnMenu)
-                .addContainerGap())
-        );
-
         javax.swing.GroupLayout pnJanelaLayout = new javax.swing.GroupLayout(pnJanela);
         pnJanela.setLayout(pnJanelaLayout);
         pnJanelaLayout.setHorizontalGroup(
             pnJanelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnJanelaLayout.createSequentialGroup()
+            .addGroup(pnJanelaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnJanelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnConteudo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnJanelaLayout.createSequentialGroup()
+                        .addComponent(pnConteudo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(pnTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnJanelaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnMenu)
+                .addGap(100, 100, 100))
         );
         pnJanelaLayout.setVerticalGroup(
             pnJanelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,8 +187,10 @@ public class JFrameVersao extends javax.swing.JFrame
                 .addContainerGap()
                 .addComponent(pnTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnConteudo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(pnConteudo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnMenu)
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         menuAcoes.setText("Ações");
@@ -265,7 +287,7 @@ public class JFrameVersao extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnJanela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 15, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -273,31 +295,52 @@ public class JFrameVersao extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuItemConverterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConverterActionPerformed
-        // TODO add your handling code here:
+        JFrame jfConverter = new JFrameConverter();
+        jfConverter.pack();
+        jfConverter.setVisible(true);
+        dispose();
     }//GEN-LAST:event_menuItemConverterActionPerformed
 
     private void menuItemVersaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemVersaoActionPerformed
-        // TODO add your handling code here:
+        JFrame jfVersao = new JFrameVersao();
+        jfVersao.pack();
+        jfVersao.setVisible(true);
+        dispose();
     }//GEN-LAST:event_menuItemVersaoActionPerformed
 
     private void menuItemAutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAutoresActionPerformed
-        // TODO add your handling code here:
+        JFrame jfAutores = new JFrameAutores();
+        jfAutores.pack();
+        jfAutores.setVisible(true);
+        dispose();
     }//GEN-LAST:event_menuItemAutoresActionPerformed
 
     private void menuItemInstrucoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInstrucoesActionPerformed
-        // TODO add your handling code here:
+        JFrame jfInstrucoes = new JFrameInstrucoes();
+        jfInstrucoes.pack();
+        jfInstrucoes.setVisible(true);
+        dispose();
     }//GEN-LAST:event_menuItemInstrucoesActionPerformed
 
     private void menuItemFaleConoscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemFaleConoscoActionPerformed
-        // TODO add your handling code here:
+        JFrame jfFaleConosco = new JFrameFaleConosco();
+        jfFaleConosco.pack();
+        jfFaleConosco.setVisible(true);
+        dispose();
     }//GEN-LAST:event_menuItemFaleConoscoActionPerformed
 
     private void menuItemConcatenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConcatenarActionPerformed
-        // TODO add your handling code here:
+        JFrame jfConcatenar = new JFrameConcatenar();
+        jfConcatenar.pack();
+        jfConcatenar.setVisible(true);
+        dispose();
     }//GEN-LAST:event_menuItemConcatenarActionPerformed
 
     private void menuItemCompararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCompararActionPerformed
-        // TODO add your handling code here:
+        JFrame jfComparar = new JFrameComparar();
+        jfComparar.pack();
+        jfComparar.setVisible(true);
+        dispose();
     }//GEN-LAST:event_menuItemCompararActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
@@ -364,8 +407,10 @@ public class JFrameVersao extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JButton btnMenu;
+    private javax.swing.JLabel lbAno;
     private javax.swing.JLabel lbImagem;
     private javax.swing.JLabel lbTitulo;
+    private javax.swing.JLabel lbUnesp;
     private javax.swing.JLabel lbVersao;
     private javax.swing.JMenu menuAcoes;
     private javax.swing.JMenu menuAjuda;
