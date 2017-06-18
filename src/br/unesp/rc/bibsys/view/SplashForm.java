@@ -377,18 +377,19 @@ public class SplashForm extends javax.swing.JFrame
         {
             public void run()
             {
+                File file = new File("bibFile\\file-01.bib");
 //                File file = new File("bib1.bib");
-//                Conversor.converte(file);
-                try
-                {
-                    // trocar pra 5000 depois  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    Thread.sleep(1000);
-                }
-                catch(Exception e)
-                {
-                    
-                }
-                new SplashForm().setVisible(true);
+                Conversor.converte(file);
+//                try
+//                {
+//                    // trocar pra 5000 depois  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//                    Thread.sleep(1000);
+//                }
+//                catch(Exception e)
+//                {
+//                    
+//                }
+//                new SplashForm().setVisible(true);
             }
         });
     }
