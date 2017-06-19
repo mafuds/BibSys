@@ -49,7 +49,8 @@ public class ParserUtils {
     }
     
     static public String trataAutorDuplicado(String bibkey, ArrayList<String> bibkeys) {
-        int cont = 0, cont2 = 0;
+        int cont = 0;
+        
         for (String bibkey1 : bibkeys) {
             if (bibkey1.contains(bibkey)) {
                 // entao o bibkey está repetido.
@@ -59,14 +60,14 @@ public class ParserUtils {
         
         if (cont > 26) {
             System.out.println("Erro! Já foram inseridos muitos registros com o mesmo bibkey.");
-            return bibkey + 'z';
+            return "";
         }
 
         if (cont > 0) {
             bibkey = bibkey + ((char)('a'+cont-1));
         }
 
-        System.out.println("bibkey: " + bibkey);
+//        System.out.println("bibkey: " + bibkey);
         return bibkey;
     }
     
