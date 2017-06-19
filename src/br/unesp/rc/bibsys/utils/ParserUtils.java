@@ -48,8 +48,27 @@ public class ParserUtils {
         return autorFormatado;
     }
     
+    static public String trataAutorDuplicado(String bibkey, ArrayList<String> bibkeys) {
+        int cont = 0;
+//        String ultimoBibkey = "";
+        for (String bibkey1 : bibkeys) {
+            if (bibkey1.contains(bibkey)) {
+                // entao o bibkey está repetido.
+                cont++;
+//                ultimoBibkey = bibkey1;
+            }
+        }
+                
+        if (cont > 0) {
+            bibkey = bibkey + ((char)('a'+cont));
+        }
+
+        return bibkey;
+    }
+    
     static public ArrayList<Elemento> lerDados(File arquivo) {
         ArrayList<Elemento> lista = new ArrayList<>();
+        ArrayList<String> bibkeys = new ArrayList<>();
         String linha, ref = "", nomeTag = "", valorTag = "";
         int i, max;
         char c;
@@ -175,7 +194,10 @@ public class ParserUtils {
                     if (!hm.isEmpty()) {
                         e.setValores(hm);
                     }
-                    e.setBibkey(e.getAutor() + ":" + e.getAno());
+                    String bibkey = (e.getAutor() + ":" + e.getAno());
+                    bibkey = ParserUtils.trataAutorDuplicado(bibkey, bibkeys);
+                    bibkeys.add(bibkey);
+                    e.setBibkey(bibkey);
                     lista.add(e);
                 }
                 

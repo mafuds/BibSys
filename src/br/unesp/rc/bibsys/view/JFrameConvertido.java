@@ -45,7 +45,7 @@ public class JFrameConvertido extends javax.swing.JFrame
     
     private void loadTxtEndereco(File arq) {
         String conteudo = ArquivoUtils.lerArquivo(arq);
-        System.out.println(conteudo);
+//        System.out.println(conteudo);
         txtArquivo.setText(conteudo);
     }
     /**

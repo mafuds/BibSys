@@ -7,6 +7,7 @@ package br.unesp.rc.bibsys.view;
 
 import br.unesp.rc.bibsys.utils.ArquivoUtils;
 import br.unesp.rc.bibsys.utils.OperacaoUtils;
+import br.unesp.rc.bibsys.utils.ParserUtils;
 import java.awt.Image;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
@@ -416,6 +417,8 @@ public class SplashForm extends javax.swing.JFrame
             public void run() {
                 ArquivoUtils.criaDiretorio("src\\tmp");
                 ArquivoUtils.criaDiretorio("src\\Arquivos");
+                
+                ParserUtils.lerDados(new File("src\\Arquivos\\file-duplicado.bib"));
                 
                 try {
                     // trocar pra 5000 depois  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
