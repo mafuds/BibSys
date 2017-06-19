@@ -420,13 +420,13 @@ public class SplashForm extends javax.swing.JFrame
                 
                 ParserUtils.lerDados(new File("src\\Arquivos\\file-duplicado.bib"));
                 
-                try {
-                    // trocar pra 5000 depois  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    Thread.sleep(1000);
-                } catch(Exception ex) {
-                    System.out.println("Erro! " + ex.getMessage());
-                }
-                new SplashForm().setVisible(true);
+//                try {
+//                    // trocar pra 5000 depois  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//                    Thread.sleep(1000);
+//                } catch(Exception ex) {
+//                    System.out.println("Erro! " + ex.getMessage());
+//                }
+//                new SplashForm().setVisible(true);
             }
         });
         
