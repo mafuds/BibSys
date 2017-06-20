@@ -1,3 +1,7 @@
+/*
+ * ArquivoUtils contém as operações básicas a serem realizadas com arquivos
+ * Propicionam que possamos trabalhar com o conteúdo em outras etapas
+ */
 package br.unesp.rc.bibsys.utils;
 
 import br.unesp.rc.bibsys.beans.Elemento;
@@ -10,6 +14,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Pega o conteúdo de um arquivo
+ * @author Artur, Gabriel e Mariana
+ * @param arq o arquivo a ser lido
+ * @return uma string com o conteúdo do arquivo
+ */
 public class ArquivoUtils {
     
     static public String lerArquivo(File arq) {
@@ -26,7 +36,12 @@ public class ArquivoUtils {
         }
         return conteudo.toString();
     }
-    
+
+/**
+ * Cria um diretório com o nome dado
+ * @author Artur, Gabriel e Mariana
+ * @param nome o nome do diretório a ser criado
+ */    
     static public void criaDiretorio(String nome) {
         boolean b = false;
         File diretorio = new File(nome);
@@ -47,7 +62,13 @@ public class ArquivoUtils {
         }   
     }
     
-    
+/**
+ * Escreve um conteúdo com a formatação correta em um arquivo 
+ * @author Artur, Gabriel e Mariana
+ * @param nomeNovoArq o nome do arquivo a ser criado
+ * @param lista todo o conteúdo a ser escrito no arquivo
+ * @return um valor booleano de sucesso. True é sucesso e false é erro
+ */    
     static public boolean escreveArquivo(String nomeNovoArq, ArrayList<Elemento> lista) {
         HashMap<String, String> hm = new HashMap<>();
         boolean b = false;
@@ -76,5 +97,4 @@ public class ArquivoUtils {
         
         return b;
     }
-    
 }

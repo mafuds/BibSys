@@ -1,3 +1,7 @@
+/*
+ * ParserUtils contém as operações para o tratamento de conteúdo em um arquivo
+ * Faz toda a formatação do texto segundo as regras
+ */
 package br.unesp.rc.bibsys.utils;
 
 import br.unesp.rc.bibsys.beans.Elemento;
@@ -10,6 +14,12 @@ import java.util.HashMap;
 
 public class ParserUtils {
     
+/**
+ * Faz o tratamento de autores para mudar a nomenclatura baseado no número
+ * @author Artur, Gabriel e Mariana
+ * @param autor a quantidade de autores
+ * @return um novo campo de autor formatado corretamente
+ */    
     static public String trataAutor(String autor) {
         String autorFormatado = "";
         String [] array1;
@@ -47,7 +57,14 @@ public class ParserUtils {
         
         return autorFormatado;
     }
-    
+ 
+/**
+ * Faz o tratamento da bibkey para trabalhos com o mesmo autor segundo a regra passada (colocar uma letra após o nome)
+ * @author Artur, Gabriel e Mariana
+ * @param bibkey o bibkey a ser buscado
+ * @param bibkeys a lista com todos os bibkeys
+ * @return um novo bibkey formatado corretamente
+ */    
     static public String trataAutorDuplicado(String bibkey, ArrayList<String> bibkeys) {
         int cont = 0;
         
@@ -70,7 +87,13 @@ public class ParserUtils {
 //        System.out.println("bibkey: " + bibkey);
         return bibkey;
     }
-    
+
+/**
+ * Lê os dados de um arquivo
+ * @author Artur, Gabriel e Mariana
+ * @param arquivo o arquivo a ser lido
+ * @return uma lista com os elementos presentes no arquivo
+ */    
     static public ArrayList<Elemento> lerDados(File arquivo) {
         ArrayList<Elemento> lista = new ArrayList<>();
         ArrayList<String> bibkeys = new ArrayList<>();
@@ -127,7 +150,6 @@ public class ParserUtils {
                             i++;
                             c = linha.charAt(i);
                         }
-//                        System.out.println("nomeTag: " + nomeTag);
 
                         // depois do nome do parametro, tem que haver um =
                         while (!(c == '=')) {
@@ -175,7 +197,6 @@ public class ParserUtils {
                             }
                         }
                             
-//                        System.out.println("valor: " + valorTag);
 
                         // se tiver achado nome e valor de tag, salva no hashmap
                         if (!nomeTag.equals("") && !valorTag.equals("")) {
@@ -186,15 +207,12 @@ public class ParserUtils {
                         // verifico se a tag era de ano ou autor
                         if (nomeTag.equals("author")) {
                             // trato o nome do autor
-//                            Conversor.trataAutor(valorTag);
                             e.setAutor(ParserUtils.trataAutor(valorTag));
-//                            e.setAutor(valorTag);
                         }
                         if (nomeTag.equals("year")) {
                             e.setAno(Integer.parseInt(valorTag));
                         }
                         linha = reader.readLine();
-//                        System.out.println("linha: " + linha);
                     }
                     if (!hm.isEmpty()) {
                         e.setValores(hm);
@@ -214,5 +232,4 @@ public class ParserUtils {
            
         return lista;
     }
-    
 }

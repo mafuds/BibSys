@@ -1,3 +1,7 @@
+/*
+ * DisplayTrayIcon é responsável por fazer com o que o software fique na System Tray
+ * corretamente e possua suas funções
+ */
 package br.unesp.rc.bibsys.view;
 
 import java.awt.AWTException;
@@ -19,9 +23,14 @@ public class DisplayTrayIcon {
     public DisplayTrayIcon() {
         ShowTrayIcon();
     }
-    
+
+/**
+ * Mostra o programa como um ícone na System Tray com as devidas funcionalidades
+ * em um menu, além das devidas características
+ * @author Artur, Gabriel e Mariana
+ */    
     public static void ShowTrayIcon() {
-        if(!SystemTray.isSupported()) {
+        if (!SystemTray.isSupported()) {
             System.out.println("Não suporta a System Tray");
             System.exit(0);
             return;
@@ -94,7 +103,14 @@ public class DisplayTrayIcon {
             
         }
     }
-    
+
+/**
+ * Cria a imagem a ser exibida na System Tray
+ * @author Artur, Gabriel e Mariana
+ * @param path o caminho da imagem a ser mostrada
+ * @param desc o texto que será exibido ao se clicar no ícone
+ * @return uma imagem pronta para ser usada
+ */    
     protected static Image CreateIcon(String path, String desc) {
         URL ImageURL = DisplayTrayIcon.class.getResource(path);
         return (new ImageIcon(ImageURL,desc)).getImage();
