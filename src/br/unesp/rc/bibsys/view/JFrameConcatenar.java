@@ -38,8 +38,7 @@ public class JFrameConcatenar extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         pnJanela = new javax.swing.JPanel();
         pnTitulo = new javax.swing.JPanel();
@@ -107,73 +106,73 @@ public class JFrameConcatenar extends javax.swing.JFrame
         );
 
         btnConcatenar.setText("Concatenar");
-        btnConcatenar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnConcatenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConcatenarActionPerformed(evt);
             }
         });
 
         btnMenu.setText("Menu Principal");
-        btnMenu.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
             }
         });
 
         btnPesquisarArq1.setText("Pesquisar");
-        btnPesquisarArq1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnPesquisarArq1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarArq1ActionPerformed(evt);
             }
         });
 
         btnPesquisarArq2.setText("Pesquisar");
-        btnPesquisarArq2.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnPesquisarArq2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarArq2ActionPerformed(evt);
             }
         });
 
         lbDescricao.setText("Por favor, selecione dois arquivos para serem concatenados.");
 
-        rbOrdenar.setText("Ordenar");
+        rbOrdenar.setText("Ordenar resultado");
+        rbOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbOrdenarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnConteudoLayout = new javax.swing.GroupLayout(pnConteudo);
         pnConteudo.setLayout(pnConteudoLayout);
         pnConteudoLayout.setHorizontalGroup(
             pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(btnMenu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rbOrdenar)
-                .addGap(18, 18, 18)
-                .addComponent(btnConcatenar)
-                .addGap(35, 35, 35))
-            .addGroup(pnConteudoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtEnderecoArq1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPesquisarArq1)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConteudoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtEnderecoArq2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPesquisarArq2)
-                .addContainerGap())
             .addGroup(pnConteudoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbDescricao)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(171, Short.MAX_VALUE))
+            .addGroup(pnConteudoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnConteudoLayout.createSequentialGroup()
+                        .addComponent(txtEnderecoArq1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPesquisarArq1))
+                    .addGroup(pnConteudoLayout.createSequentialGroup()
+                        .addComponent(txtEnderecoArq2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPesquisarArq2)))
+                .addContainerGap())
+            .addGroup(pnConteudoLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnConteudoLayout.createSequentialGroup()
+                        .addComponent(rbOrdenar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnConteudoLayout.createSequentialGroup()
+                        .addComponent(btnMenu)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnConcatenar)
+                        .addGap(35, 35, 35))))
         );
         pnConteudoLayout.setVerticalGroup(
             pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,11 +187,12 @@ public class JFrameConcatenar extends javax.swing.JFrame
                 .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEnderecoArq2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisarArq2))
-                .addGap(94, 94, 94)
+                .addGap(18, 18, 18)
+                .addComponent(rbOrdenar)
+                .addGap(47, 47, 47)
                 .addGroup(pnConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConcatenar)
-                    .addComponent(btnMenu)
-                    .addComponent(rbOrdenar))
+                    .addComponent(btnMenu))
                 .addGap(19, 19, 19))
         );
 
@@ -220,40 +220,32 @@ public class JFrameConcatenar extends javax.swing.JFrame
         menuAcoes.setText("Ações");
 
         menuItemConverter.setText("Converter");
-        menuItemConverter.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        menuItemConverter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemConverterActionPerformed(evt);
             }
         });
         menuAcoes.add(menuItemConverter);
 
         menuItemConcatenar.setText("Concatenar");
-        menuItemConcatenar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        menuItemConcatenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemConcatenarActionPerformed(evt);
             }
         });
         menuAcoes.add(menuItemConcatenar);
 
         menuItemComparar.setText("Comparar");
-        menuItemComparar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        menuItemComparar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemCompararActionPerformed(evt);
             }
         });
         menuAcoes.add(menuItemComparar);
 
         menuItemOrdenar.setText("Ordenar");
-        menuItemOrdenar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        menuItemOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemOrdenarActionPerformed(evt);
             }
         });
@@ -264,20 +256,16 @@ public class JFrameConcatenar extends javax.swing.JFrame
         menuSobre.setText("Sobre");
 
         menuItemVersao.setText("Versão do sistema");
-        menuItemVersao.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        menuItemVersao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemVersaoActionPerformed(evt);
             }
         });
         menuSobre.add(menuItemVersao);
 
         menuItemAutores.setText("Autores");
-        menuItemAutores.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        menuItemAutores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemAutoresActionPerformed(evt);
             }
         });
@@ -288,20 +276,16 @@ public class JFrameConcatenar extends javax.swing.JFrame
         menuAjuda.setText("Ajuda");
 
         menuItemInstrucoes.setText("Instruções");
-        menuItemInstrucoes.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        menuItemInstrucoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemInstrucoesActionPerformed(evt);
             }
         });
         menuAjuda.add(menuItemInstrucoes);
 
         menuItemFaleConosco.setText("Fale conosco");
-        menuItemFaleConosco.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        menuItemFaleConosco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemFaleConoscoActionPerformed(evt);
             }
         });
@@ -329,22 +313,17 @@ public class JFrameConcatenar extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConcatenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConcatenarActionPerformed
-        
         String nomeArq;
         File arq1 = new File(txtEnderecoArq1.getText());
         File arq2 = new File(txtEnderecoArq2.getText());
+        boolean ordenar = false;
         
-        nomeArq = OperacaoUtils.concatenar(arq1, arq2);
+        if (rbOrdenar.isSelected()) { 
+            ordenar = true;
+        }
         
-//        if (rbOrdenar.isSelected()) { 
-//                try {
-//                    // se o usuário pedir pra já ordenar
-//                    nomeArq = OperacaoUtils.ordenar(arq1);
-//                } catch (IOException ex) {
-//                    Logger.getLogger(JFrameConverter.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
-
+        nomeArq = OperacaoUtils.concatenar(arq1, arq2, ordenar);
+        
         // abrir o JFrame de arquivo convertido
         JFrame jfConcatenado = new JFrameConcatenado(nomeArq);
         jfConcatenado.pack();
@@ -435,6 +414,10 @@ public class JFrameConcatenar extends javax.swing.JFrame
         jfOrdenar.setVisible(true);
         dispose();
     }//GEN-LAST:event_menuItemOrdenarActionPerformed
+
+    private void rbOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbOrdenarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbOrdenarActionPerformed
 
     /**
      * @param args the command line arguments

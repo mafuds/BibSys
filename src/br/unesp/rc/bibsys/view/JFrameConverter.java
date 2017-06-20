@@ -39,8 +39,7 @@ public class JFrameConverter extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         pnJanela = new javax.swing.JPanel();
         pnTitulo = new javax.swing.JPanel();
@@ -110,28 +109,22 @@ public class JFrameConverter extends javax.swing.JFrame
         );
 
         btnConverter.setText("Converter");
-        btnConverter.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnConverter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConverterActionPerformed(evt);
             }
         });
 
         btnMenu.setText("Menu Principal");
-        btnMenu.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
             }
         });
 
         btnPesquisar.setText("Pesquisar");
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarActionPerformed(evt);
             }
         });
@@ -139,20 +132,16 @@ public class JFrameConverter extends javax.swing.JFrame
         rbEnderecoArq.setEnabled(true);
         rbEnderecoArq.setSelected(true);
         rbEnderecoArq.setText("Caminho do arquivo:");
-        rbEnderecoArq.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        rbEnderecoArq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbEnderecoArqActionPerformed(evt);
             }
         });
         buttonGroup.add(rbEnderecoArq);
 
         rbTextoArq.setText("Texto a ser convertido:");
-        rbTextoArq.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        rbTextoArq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbTextoArqActionPerformed(evt);
             }
         });
@@ -163,7 +152,12 @@ public class JFrameConverter extends javax.swing.JFrame
         txtTextoBib.setEnabled(false);
         spTexto.setViewportView(txtTextoBib);
 
-        rbOrdenar.setText("Ordenar");
+        rbOrdenar.setText("Ordenar resultado");
+        rbOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbOrdenarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnConteudoLayout = new javax.swing.GroupLayout(pnConteudo);
         pnConteudo.setLayout(pnConteudoLayout);
@@ -174,7 +168,7 @@ public class JFrameConverter extends javax.swing.JFrame
                 .addComponent(btnMenu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(rbOrdenar)
-                .addGap(18, 18, 18)
+                .addGap(33, 33, 33)
                 .addComponent(btnConverter)
                 .addGap(35, 35, 35))
             .addGroup(pnConteudoLayout.createSequentialGroup()
@@ -240,40 +234,32 @@ public class JFrameConverter extends javax.swing.JFrame
         menuAcoes.setText("Ações");
 
         menuItemConverter.setText("Converter");
-        menuItemConverter.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        menuItemConverter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemConverterActionPerformed(evt);
             }
         });
         menuAcoes.add(menuItemConverter);
 
         menuItemConcatenar.setText("Concatenar");
-        menuItemConcatenar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        menuItemConcatenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemConcatenarActionPerformed(evt);
             }
         });
         menuAcoes.add(menuItemConcatenar);
 
         menuItemComparar.setText("Comparar");
-        menuItemComparar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        menuItemComparar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemCompararActionPerformed(evt);
             }
         });
         menuAcoes.add(menuItemComparar);
 
         menuItemOrdenar.setText("Ordenar");
-        menuItemOrdenar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        menuItemOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemOrdenarActionPerformed(evt);
             }
         });
@@ -284,20 +270,16 @@ public class JFrameConverter extends javax.swing.JFrame
         menuSobre.setText("Sobre");
 
         menuItemVersao.setText("Versão do sistema");
-        menuItemVersao.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        menuItemVersao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemVersaoActionPerformed(evt);
             }
         });
         menuSobre.add(menuItemVersao);
 
         menuItemAutores.setText("Autores");
-        menuItemAutores.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        menuItemAutores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemAutoresActionPerformed(evt);
             }
         });
@@ -308,20 +290,16 @@ public class JFrameConverter extends javax.swing.JFrame
         menuAjuda.setText("Ajuda");
 
         menuItemInstrucoes.setText("Instruções");
-        menuItemInstrucoes.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        menuItemInstrucoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemInstrucoesActionPerformed(evt);
             }
         });
         menuAjuda.add(menuItemInstrucoes);
 
         menuItemFaleConosco.setText("Fale conosco");
-        menuItemFaleConosco.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        menuItemFaleConosco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemFaleConoscoActionPerformed(evt);
             }
         });
@@ -350,7 +328,13 @@ public class JFrameConverter extends javax.swing.JFrame
 
     private void btnConverterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConverterActionPerformed
         // Para o caso de ser um texto, abre um arquivo e escreve o conteúdo do campo nele
-        String caminhoArq = "src\\tmp\\arquivoParaConverter.bib";
+        String caminhoArq = "src\\tmp\\novoArquivoConverter.bib";
+        boolean ordenar = false;
+        
+        if (rbOrdenar.isSelected()) { 
+            ordenar = true;
+        }
+        
         if (rbTextoArq.isSelected()) {
             try {
                 PrintWriter arqConteudoEscrito = new PrintWriter(caminhoArq, "UTF-8");
@@ -363,16 +347,7 @@ public class JFrameConverter extends javax.swing.JFrame
             
             // pega arquivo criado e o formata
             File arq1 = new File(caminhoArq);
-            String arqConvertido = OperacaoUtils.converte(arq1);
-            
-            if (rbOrdenar.isSelected()) { 
-                try {
-                    // se o usuário pedir pra já ordenar
-                    arqConvertido = OperacaoUtils.ordenar(arq1);
-                } catch (IOException ex) {
-                    Logger.getLogger(JFrameConverter.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+            String arqConvertido = OperacaoUtils.converte(arq1, ordenar);
             
             // abrir o JFrame de arquivo convertido
             JFrame jfConvertido = new JFrameConvertido(arqConvertido);
@@ -385,16 +360,7 @@ public class JFrameConverter extends javax.swing.JFrame
         if (rbEnderecoArq.isSelected()) {
             String nomeArq1;
             File arq1 = new File(txtEnderecoArq.getText());
-            nomeArq1 = OperacaoUtils.converte(arq1);
-            
-            if (rbOrdenar.isSelected()) { 
-                try {
-                    // se o usuário pedir pra já ordenar
-                    nomeArq1 = OperacaoUtils.ordenar(arq1);
-                } catch (IOException ex) {
-                    Logger.getLogger(JFrameConverter.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+            nomeArq1 = OperacaoUtils.converte(arq1, ordenar);
             
             // abrir o JFrame de arquivo convertido
             JFrame jfConvertido = new JFrameConvertido(nomeArq1);
@@ -509,6 +475,10 @@ public class JFrameConverter extends javax.swing.JFrame
         jfOrdenar.setVisible(true);
         dispose();
     }//GEN-LAST:event_menuItemOrdenarActionPerformed
+
+    private void rbOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbOrdenarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbOrdenarActionPerformed
 
     /**
      * @param args the command line arguments

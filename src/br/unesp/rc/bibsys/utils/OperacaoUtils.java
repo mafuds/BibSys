@@ -23,7 +23,7 @@ public class OperacaoUtils
     public OperacaoUtils() {
     }
         
-    static public String converte(File arquivo) {
+    static public String converte(File arquivo, boolean ordenar) {
 
         ArrayList<Elemento> lista = ParserUtils.lerDados(arquivo);
 //        String nomeArq = arquivo.getName();
@@ -31,13 +31,18 @@ public class OperacaoUtils
         String nomeNovoArq = "src\\tmp\\"+arquivo.getName().substring(0, arquivo.getName().length()-4)
                 +"-formatado.bib";
         
+        
+        if (ordenar) {
+            Collections.sort(lista,comparing(Elemento::getBibkey));
+        }
+        
         ArquivoUtils.escreveArquivo(nomeNovoArq, lista);
         
         return nomeNovoArq;
     }
     
     
-    static public String concatenar(File arq1, File arq2) {
+    static public String concatenar(File arq1, File arq2, boolean ordenar) {
         // garante que o diretorio do arquivo resultante existe
         ArquivoUtils.criaDiretorio("src\\Arquivos\\Concatenacao");
 
@@ -52,12 +57,16 @@ public class OperacaoUtils
         listaTotal.addAll(listaArq1);
         listaTotal.addAll(listaArq2);
         
+        if (ordenar) {
+            Collections.sort(listaTotal,comparing(Elemento::getBibkey));
+        }
+        
         ArquivoUtils.escreveArquivo(nomeNovoArq, listaTotal);
         
         return nomeNovoArq;
     }
     
-    static public String comparar(File arq1, File arq2) throws IOException {
+    static public String comparar(File arq1, File arq2, boolean ordenar) throws IOException {
        
         // define nomes dos arquivos resultantes
         String arquivoAmbos = "src\\tmp\\Referencias-" + arq1.getName().substring(0, arq1.getName().length()-4) + 
@@ -108,6 +117,12 @@ public class OperacaoUtils
             flag = false; // reseta a flag pra conseguir comparar de novo
         }
 
+        if (ordenar) {
+            Collections.sort(listaAmbos,comparing(Elemento::getBibkey));
+            Collections.sort(listaSoUm,comparing(Elemento::getBibkey));
+            Collections.sort(listaSoDois,comparing(Elemento::getBibkey));
+        }
+        
         // escreve dados nos arquivos de resultados
         ArquivoUtils.escreveArquivo(arquivoAmbos, listaAmbos);
         ArquivoUtils.escreveArquivo(arquivoSoUm, listaSoUm);

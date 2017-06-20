@@ -214,7 +214,7 @@
                       <Component id="btnMenu" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="rbOrdenar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="btnConverter" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
@@ -340,8 +340,11 @@
             </Container>
             <Component class="javax.swing.JRadioButton" name="rbOrdenar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ordenar"/>
+                <Property name="text" type="java.lang.String" value="Ordenar resultado"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbOrdenarActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
