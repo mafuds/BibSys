@@ -50,7 +50,7 @@ public class ParserUtils {
                     autorFormatado = array1[0].split(",")[0].trim();
                     array2 = autorFormatado.split(" ");
                     autorFormatado = array2[array2.length-1].toLowerCase().trim();
-                    autorFormatado = autorFormatado + "etal";
+                    autorFormatado = autorFormatado + ".etal";
                 }
                 break;
         }
