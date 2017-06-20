@@ -14,14 +14,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Pega o conteúdo de um arquivo
- * @author Artur, Gabriel e Mariana
- * @param arq o arquivo a ser lido
- * @return uma string com o conteúdo do arquivo
- */
 public class ArquivoUtils {
     
+    /**
+     * Pega o conteúdo de um arquivo
+     * @author Artur, Gabriel e Mariana
+     * @param arq o arquivo a ser lido
+     * @return uma string com o conteúdo do arquivo
+     */
     static public String lerArquivo(File arq) {
         StringBuilder conteudo = new StringBuilder();
 //        content.append("<html>");
@@ -37,11 +37,11 @@ public class ArquivoUtils {
         return conteudo.toString();
     }
 
-/**
- * Cria um diretório com o nome dado
- * @author Artur, Gabriel e Mariana
- * @param nome o nome do diretório a ser criado
- */    
+    /**
+     * Cria um diretório com o nome dado
+     * @author Artur, Gabriel e Mariana
+     * @param nome o nome do diretório a ser criado
+     */    
     static public void criaDiretorio(String nome) {
         boolean b = false;
         File diretorio = new File(nome);

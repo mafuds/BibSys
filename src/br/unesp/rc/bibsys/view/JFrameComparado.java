@@ -35,9 +35,9 @@ public class JFrameComparado extends javax.swing.JFrame
     
     /**
      * Creates new form JFrameConvertido
-     * @param arqAmbos
-     * @param arq1
-     * @param arq2
+     * @param arqAmbos é o arquivo que contem referencias dos dois arquivos fonte
+     * @param arq1 é o arquivo que contem referencias apenas do primeiro arquivo fonte
+     * @param arq2 é o arquivo que contem referencias apenas do segundo arquivo fonte
      */
     public JFrameComparado(String arqAmbos, String arq1, String arq2)
     {

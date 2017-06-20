@@ -33,7 +33,7 @@ public class JFrameConvertido extends javax.swing.JFrame
     
     /**
      * Creates new form JFrameConvertido
-     * @param arqConvertido
+     * @param arqConvertido é o arquivo fonte formatado
      */
     public JFrameConvertido(String arqConvertido)
     {

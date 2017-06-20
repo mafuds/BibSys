@@ -33,7 +33,7 @@ public class JFrameOrdenado extends javax.swing.JFrame
     
     /**
      * Creates new form JFrameConvertido
-     * @param arqConvertido
+     * @param arqConvertido é o arquivo fonte ordenado
      */
     public JFrameOrdenado(String arqConvertido)
     {

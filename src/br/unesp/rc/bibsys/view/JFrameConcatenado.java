@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class JFrameConcatenado extends javax.swing.JFrame
 {
-    String nomeArqConvertido;
+    String nomeArqConcatenado;
     
     /**
      * Creates new form JFrameConvertido
@@ -33,13 +33,13 @@ public class JFrameConcatenado extends javax.swing.JFrame
     
     /**
      * Creates new form JFrameConvertido
-     * @param arqConvertido
+     * @param arqConcatenado é o arquivo com os arquivos fonte concatenados
      */
-    public JFrameConcatenado(String arqConvertido)
+    public JFrameConcatenado(String arqConcatenado)
     {
         initComponents();
-        File arq = new File(arqConvertido);
-        nomeArqConvertido = arq.getName();
+        File arq = new File(arqConcatenado);
+        nomeArqConcatenado = arq.getName();
         loadTxtEndereco(arq);
     }
     
@@ -282,7 +282,7 @@ public class JFrameConcatenado extends javax.swing.JFrame
         ArquivoUtils.criaDiretorio(caminho);
         boolean sucesso = false;
         
-        String nomeSalvarArq = "src\\Arquivos\\Concatenacao\\" + nomeArqConvertido;
+        String nomeSalvarArq = "src\\Arquivos\\Concatenacao\\" + nomeArqConcatenado;
         String mensagem = "Ocorreu um erro ao salvar o arquivo. ";
         try {
             PrintWriter novoArq = new PrintWriter(nomeSalvarArq, "UTF-8");
