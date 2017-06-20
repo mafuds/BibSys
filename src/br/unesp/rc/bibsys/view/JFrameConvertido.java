@@ -40,6 +40,7 @@ public class JFrameConvertido extends javax.swing.JFrame
         initComponents();
         File arq = new File(arqConvertido);
         nomeArqConvertido = arq.getName();
+        System.out.println(nomeArqConvertido);
         loadTxtEndereco(arq);
     }
     

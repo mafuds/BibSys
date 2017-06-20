@@ -11,8 +11,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -328,7 +329,6 @@ public class JFrameConverter extends javax.swing.JFrame
 
     private void btnConverterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConverterActionPerformed
         // Para o caso de ser um texto, abre um arquivo e escreve o conteúdo do campo nele
-        String caminhoArq = "src\\tmp\\novoArquivoConverter.bib";
         boolean ordenar = false;
         
         if (rbOrdenar.isSelected()) { 
@@ -336,6 +336,10 @@ public class JFrameConverter extends javax.swing.JFrame
         }
         
         if (rbTextoArq.isSelected()) {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd--HH-mm-ss");
+            Date date = new Date();
+            System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+            String caminhoArq = "src\\tmp\\novoArq-"+dateFormat.format(date)+".bib";
             try {
                 PrintWriter arqConteudoEscrito = new PrintWriter(caminhoArq, "UTF-8");
                 

@@ -132,8 +132,8 @@ public class OperacaoUtils
     }
     
     static public String ordenar(File arq) throws IOException {
-       
-        String nomeNovoArq = "src\\tmp\\" + arq.getName() + "-ordenado.bib";
+
+        String nomeNovoArq = "src\\tmp\\" + arq.getName().substring(0, arq.getName().length()-4) + "-ordenado.bib";
                 
         // pega as informações do arquivo lido
         ArrayList<Elemento> lista = ParserUtils.lerDados(arq);
