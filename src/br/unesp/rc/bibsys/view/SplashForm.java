@@ -419,8 +419,7 @@ public class SplashForm extends javax.swing.JFrame
                 ArquivoUtils.criaDiretorio("src\\Arquivos");
                 
                 try {
-                    // trocar pra 5000 depois  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    Thread.sleep(1000);
+                    Thread.sleep(5000);
                 } catch(Exception ex) {
                     System.out.println("Erro! " + ex.getMessage());
                 }

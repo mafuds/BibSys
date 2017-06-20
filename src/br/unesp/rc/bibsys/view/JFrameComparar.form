@@ -212,7 +212,9 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="btnMenu" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="312" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="rbOrdenar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnComparar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
@@ -256,6 +258,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnComparar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnMenu" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rbOrdenar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   </Group>
@@ -302,6 +305,11 @@
             <Component class="javax.swing.JLabel" name="lbDescricao">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Por favor, selecione dois arquivos para serem comparados."/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="rbOrdenar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ordenar"/>
               </Properties>
             </Component>
           </SubComponents>
